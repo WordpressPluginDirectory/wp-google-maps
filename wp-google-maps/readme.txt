@@ -3,9 +3,9 @@ Contributors: WPGMaps, NickDuncan, CodeCabin_, DylanAuty
 Donate link: https://www.wpgmaps.com
 Tags: google maps, maps, map, map markers, block, map block, google map, google maps plugin, wp google maps, wp google map, map plugin, store locator, google map plugin, map widget, open layers, elementor map
 Requires at least: 3.5
-Tested up to: 6.6
+Tested up to: 6.7
 Requires PHP: 7.0
-Stable tag: 9.0.41
+Stable tag: 9.0.44
 License: GPLv2
 
 The easiest to use Google maps plugin! Create a custom Google map, map block, store locator or map widget with high quality markers containing categories, descriptions, images and links.
@@ -88,7 +88,7 @@ The [WP Go Maps Pro Version](https://www.wpgmaps.com/purchase-professional-versi
 * Multiple map widget functionality
 * Add retina-ready map marker icons
 * WordPress Network friendly
-* Get the [WP Go Maps Professional Edition](https://www.wpgmaps.com/purchase-professional-version/) for only $39.99
+* Get the [WP Go Maps Professional Edition](https://www.wpgmaps.com/purchase-professional-version/)
 
 = Translations =
 Get a free copy of the WP Go Maps Pro version in exchange for translating our plugin!
@@ -175,7 +175,7 @@ In order to make use of WP Go Maps Store Locator functionality, simply click on 
 == Frequently Asked Questions ==
 
 = How do I get WP Go Maps Pro? =
-Simply visit https://www.wpgmaps.com and purchase the WP Go Maps Professional Edition for $39.99 once off. Free updates and support included forever.
+Simply visit https://www.wpgmaps.com and purchase the WP Go Maps Professional Edition. Free updates and support included forever.
 
 = I've installed the plugin, now what? =
 Once installed and activated, a link should appear in your left navigation panel within your WP-ADMIN section. Click on the "WP Go Maps" link and follow the on screen instructions.
@@ -188,6 +188,9 @@ It's super easy to add a map block to your page or post. Simply add a block in t
 
 = How do I add a map widget to my widget area? =
 To add your map to your widgets area, simply go to Appearance->Widgets and drag the "WP Go Maps" Map Widget to your sidebar. You then edit the map widget to reflect the correct map.
+
+= How can I report security bugs? =
+You can report security bugs through the Patchstack Vulnerability Disclosure Program. The Patchstack team help validate, triage and handle any security vulnerabilities. [Report a security vulnerability.](https://patchstack.com/database/vdp/wp-google-maps)
 
 == Screenshots ==
 
@@ -209,6 +212,9 @@ To add your map to your widgets area, simply go to Appearance->Widgets and drag 
 
 
 == Upgrade Notice ==
+
+= 9.0.43 =
+Please update to 9.0.43 or above for the latest stability improvements.
 
 = 9.0.41 =
 Please update to 9.0.41 or above or above to ensure you are using the latest security enhancements.
@@ -325,6 +331,16 @@ Please update to 7.11.18 or above to ensure you are using the latest security en
 Please update your WP Go Maps version to 6.3.15 to ensure you are using the latest security enhancements.
 
 == Changelog ==
+
+= 9.0.44 - 2024-11-19 =
+* Added global settings JSON serialize filter, for add-ons to utilize 
+* Fixed issue where autoloader would fail in some environments where token_get_all would not behave as expected, defaults to only regex based loader
+
+= 9.0.43 - 2024-10-16 =
+* Fixed issue where Divi editors would crash if Pro add-on was not fully up to date
+
+= 9.0.42 - 2024-10-15 =
+* Fixed issue where map mashup query param would be parsed incorrectly 
 
 = 9.0.41 - 2024-10-14 =
 * Added support for 'key' parameter on some OpenLayers tile servers
@@ -733,6 +749,8 @@ Please update your WP Go Maps version to 6.3.15 to ensure you are using the late
 
 
 For more, please view the WP Go Maps site
+
+
 
 
 

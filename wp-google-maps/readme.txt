@@ -5,7 +5,7 @@ Tags: google maps, maps, map, map markers, block, map block, google map, google 
 Requires at least: 3.5
 Tested up to: 6.8
 Requires PHP: 7.0
-Stable tag: 9.0.46
+Stable tag: 9.0.48
 License: GPLv2
 
 The easiest to use Google maps plugin! Create a custom Google map, map block, store locator or map widget with high quality markers containing categories, descriptions, images and links.
@@ -213,6 +213,12 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 
 == Upgrade Notice ==
 
+= 9.0.48 =
+Please update to 9.0.48 or above or above to ensure you are using the latest security enhancements.
+
+= 9.0.47 =
+Please update to 9.0.47 or above or above to ensure you are using the latest security enhancements.
+
 = 9.0.46 =
 Please update to 9.0.46 or above for the latest stability improvements.
 
@@ -337,6 +343,15 @@ Please update to 7.11.18 or above to ensure you are using the latest security en
 Please update your WP Go Maps version to 6.3.15 to ensure you are using the latest security enhancements.
 
 == Changelog ==
+
+= 9.0.48 - 2025-10-06 =
+* Fixed issue where nominatim cache endpoints would not properly sanitize cache data. Security issue. Thanks Animesh Gaurav (Jetpack)
+* Fixed issue where nominatim cache would not clear previously stored cache data for specific query sets
+
+= 9.0.47 - 2025-10-01 =
+* Fixed issue where Ajax transport would not correctly check for nonce values. Security issue. Thanks Dmitrii Ignatyev (CleanTalk Inc) (Wordfence)
+* Fixed issue where Ajax transport would incorrectly handle authenticated methods/routes. Security issue. Thanks Dmitrii Ignatyev (CleanTalk Inc) (Wordfence)
+* Fixed issue where remove duplicated helper would not re-asset permissions. Security issue. Thanks Dmitrii Ignatyev (CleanTalk Inc) (Wordfence)
 
 = 9.0.46 - 2025-06-25 =
 * Added option to disable new Camera Control in Google Maps

@@ -1,79 +1,30 @@
-# WP Go Maps V9
-Welcome to **Atlas Novus!**
+# WP Go Maps V10
+The next generation of WP Go Maps, including improved performance, a new mapping engine, refined user interface and better support for large datasets.
 
-Map creation should be a creative and intuitive process. This is what Atlas Novus set's out to solve, with a new user interface, tools and features, creators can set up their maps in minutes.
+## Atlas Novus
+With this release we are officially deprecating our **Legacy** build, and although it is still available for existing installations, all new installations will default to **Atlas Novus**. This build includes all the latest features and adds additional user experiences aimed at improving how you create maps. 
 
-Drawing inspiration from some of the latest UI/UX trends, this build aims to provide creators with everything they could need to create stunning maps, in a way that's intuitive and relatable to other visual creation tools. 
+No new features will be ported to our Legacy build engine moving forward, however, the underlying code base will remain in place, with no intention of being removed in the future. 
 
-## Work In Progress
-Version 9 (Atlas Novus) is in active development and has not been fully completed. In most instances the nuanced development tasks are tracked locally using tools like Todoist, however, major items will be logged and added to the tasks list if needed.
+## V9 Support
+Along with this release, we will stop feature development for our V9 builds, instead focusing all feature development on V10. We will continue to maintain security and critical issues in V9  for approximately 12 months after this release. 
 
-Version 8.1 is actively maintained, however, feature development will become less involved moving forward. The idea here is that we isolate new features to this version to avoid developing things twice, for two different architectures. 
+## Map Engine
+With this release we have reworked our mapping engine system, not only adding a new engine, but also creating helpful presets which are powered by specific engines, for more use cases. 
 
-When bug fixes or small feature additions are made to V8.1, this will need to be diffed into V9. We recommend you finish a full release build, merge everything up, and then use a tool like **DiffMerge** to facilitate merging the entire build.
+## Performance
+Building on the progress we made in the V9 release, V10 sees a significant shift to more performant mapping. Specifically in terms of large datasets, with more ways to load your data than before, allowing caching and optimization of this data in a significant way. 
 
-Take care here, you will need to do a line by line reviews, which can be time-consuming but must be done properly. Atlas Novus includes new templating core modules which manage to load specific files based on the selected build version. Missing this step, or rushing through it could lead to bugs resurfacing on V9 release days, or worst case could remove the Atlas Novus core code which manages the internal build systems.
-
-## Internal Build Engines
-There are two internal build engines present with this version of WP Go Maps, namely, Atlas Novus and Legacy. Users can select which build they prefer to use from the global settings area, by adjusting the **Build** setting. 
-
-Changing between builds will not alter any database structures, existing data, or any other dynamic content stored within the plugin. Changes are purely visual, and new features will still be shared by both engines as much as possible. 
-
-New installations will be randomly assigned to a build with a 30% probability factor, leaning towards Atlas Novus. Without getting too technical, you can think of this as **1 in 3** new installations will automatically have Atlas Novus enabled.
-
-Existing installations will automatically be set to Legacy, which means nothing changes for these users visually. Those users will instead receive a notice about Atlas Novus, asking them if they'd like to try it out. They can opt out of this at any stage.
-
-## File Structure
-To make this dual build system possible, some fundamental file changes had to be made to the plugin. An important note here is that fundamentally PHP classes and JS modules are not changing. To keep the core functionality the same, we need to make sure PHP core and JS core behaves the same way in both builds. 
-
-Some custom PHP classes and JavaScript modules will be loaded specifically for Atlas Novus as it will include new UI elements which require new events at its core to function. 
-
-Additionally, some base classes are being changed to execute build conditional loading more fully. This allows specific CSS and HTML template files to be loaded based on the build engine. 
-
-**HTML** 
-We use HTML templates for most elements within the core, by default these are shared by both builds, however, it is now possible to define a duplicate/override of any file within `html/atlas-novus`. This allows developers to create new UI with a fallback to an older panel style as a fallback
-
-**CSS**
-This follows the same rules as the HTML system, however, it should be noted that Atlas Novus should fundamentally move away from ever loading the original files. This is so that we can ensure a new clean, developer-friendly style in general
-
-**Theme Overrides**
-In the longer term, we'd like to allow theme developers to create custom panel and styling overrides if they prefer, as such, at some stage, the template loader will be updated to support a custom `wp-google-maps` folder within a theme directory. If HTML or CSS files are present here, they will be loaded instead of our internal files. 
+## Theme Overrides
+V10 will also seek to allow theme developers and 3rd developers with an integrated method for replacing our internal templates, allowing more customization than before. 
 
 ## Developer Focus
-Although this build puts a heavy emphasis on creators, we also wanted to include a stronger focus on developers. This version aims to add more developer hooks to the core system than ever before, with filters and actions seeing a major comeback in this version. 
+We have made significant leaps in developer support with more hooks, JavaScript overrides, and more customization options than any of our previous versions.  
 
-If you are adding a new area to the plugin, make sure to include sufficient hooks throughout to allow 3rd party developers to extend the plugin fully. For the future, isolate these to the Atlas Novus build as it will become the default once we are sure the UI is sensible. 
+## Backwards Compatibility
+As with all of our previous releases, we have ensured that previous versions of our Pro, Gold and UGM add-ons are all compatible with the latest basic version. With that said, it will limit some functionality in these use cases. Specifically, new mapping engines, customization options and additional datasets may not be supported when used in this combination. 
 
-We will also be writing coherent, versions, and maintained **Developer Documentation** which means developers will be expected to document code when releasing new features. 
-
-## User Interface Styling
-Atlas Novus fully embraces the new orange branding and moves away from the yellow seen in the past. We found the yellow to be hard to read visually, and it often leads to users assuming errors were present where they were not. Developers should use the primary colours we set out as part of Atlast Novus and steer clear of using any legacy colours in the new build. 
-
-If new features are added to the Legacy controls, the yellow should be maintained accordingly, however, this should be a rare edge-case. 
-
-To make branding easier as a whole, we are changing the way we style things and the way we structure HTML. This should make reusing components much simpler. We will also be making use of CSS variables where possible to standardize themes across the board
-
-## JS Prototype Extension
-Where possible, proper JavaScript extension and inheritance should be applied to all new modules. As we move to a fully OOP paradigm, it is important to avoid inline events, unnamed functions (within reason) and other redundancies. 
-
-Where possible, leverage the `WPGMZA` JS API to access datasets within a map or settings area, instead of checking DOM elements directly or leaning on jQuery events. When firing off JavaScript events, do not use jQuery.events excessively, and instead focus on using our internal event system. This standardizes events and adds suffixes that help avoid conflicts.
-
-## PHP Classes
-As mentioned, we are making a big push away from procedural programming in favour of OOP instead. The idea here is that individual modules are easier to maintain than a long block of top-to-bottom executable code. 
-
-Extend and inherit wherever possible, and avoid leaning on more traditional procedural code. We know this can be tricky at first, but once you endorse this methodology fully, you will see the benefits. 
-
-If you do find you are repeating code/logic frequently, we highly recommend segmenting this into a helper method, attached to the specific class the logic applies to instead of simply copy-pasting the code as you go. 
-
-This idea of **Do Not Repeat Yourself** (DRY) can seem pointless the first time you deal with it, but it does make maintenance much easier. In the same breath, this does not mean you need to modularize everything, finding a balance is key. If you are unsure, ask a lead developer, we can help! 
-
-## Deprecation
-At its core, the plugin has always been mostly backwards compatible and this version will be no different. It will attempt to maintain full support for older structures, however, with the scale of this build, some deprecation will be unavoidable. 
-
-Consider V9 a standalone build and treat coding for it accordingly. It's better to disable a feature for the legacy build engine, in favour of better quality code in Atlas Novus.
-
-## Code Quality
-When we review your pull requests, we will be looking at good practices, staying within the paradigms we are using, and document those changes. Keep things clean and no revisions will be needed. When you do receive a review with some notes, make sure to truly absorb the feedback as we truly believe this will lead to better development as a whole.
+This is true even when a feature is available in the basic V10 release, meaning a feature might be available until an old version of the Pro add-on is activated. This is because the underlying code does not exist in those versions of the Pro add-on and for that reason cannot be used. 
 
 ## PHP 8
-Thanks to the most recent 8.1.12 build being ported to 9.0.0, we now fully support PHP8. This should always be maintained when adding new functionality, switch between major builds frequently to ensure that this is maintained. 
+In V9 we worked diligently to ensure PHP 8 is supported by our core code, we will continue to work on this moving forward, and it should be assumed the V10 is required for PHP 8.4 and above for the best results. Although new contributions on V9 may be made to allow minimal support for future PHP versions, it is not technically feasible to continue to maintain both versions indefinitely. 

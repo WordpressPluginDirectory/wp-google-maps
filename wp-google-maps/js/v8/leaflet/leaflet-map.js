@@ -203,6 +203,11 @@ jQuery(function($) {
 			this.addFullscreenControl();
 		}
 
+		/* Scale Control */
+		if(this.settings.enable_scale_control){
+			this.enableScaleControl(true);
+		}
+
 		/* Click listener */
 		this.leafletMap.on('click', (event) => {
 			this.dispatchEvent({
@@ -286,6 +291,30 @@ jQuery(function($) {
 				L.DomEvent.disableClickPropagation(element);
 				L.DomEvent.disableScrollPropagation(element);
 				L.DomEvent.on(element, 'mousedown', L.DomEvent.stopPropagation);
+			});
+		}
+
+		/* Force a Leaflet origin recalc after the page has actually painted.
+		 * `L.map(...)` above snapshots the container's dimensions at construction
+		 * time and computes its internal pixel origin from them; if the page
+		 * hasn't finished its initial layout (web fonts still settling, parent
+		 * flex/grid widths still resolving, a `display:none` ancestor that just
+		 * became visible, etc.) the snapshot is wrong and every marker placed
+		 * thereafter is offset against that bad origin.
+		 *
+		 * Double-nested requestAnimationFrame is the standard "after first
+		 * paint" signal: the outer rAF fires before the next paint, the inner
+		 * rAF guarantees the browser has actually painted at least once before
+		 * we measure. Leaflet's invalidateSize() compares old vs new dimensions
+		 * internally and bails when nothing changed, so this is safe to fire
+		 * unconditionally — the happy-path cost is one size measurement. */
+		if(typeof window !== 'undefined' && typeof window.requestAnimationFrame === 'function'){
+			window.requestAnimationFrame(() => {
+				window.requestAnimationFrame(() => {
+					if(this.leafletMap && typeof this.leafletMap.invalidateSize === 'function'){
+						this.leafletMap.invalidateSize();
+					}
+				});
 			});
 		}
 	}
@@ -775,6 +804,32 @@ jQuery(function($) {
 			}
 
 			layerController.addTo(this.leafletMap);
+		}
+	}
+
+	/**
+	 * Enables / disables the scale control bar
+	 * @param enable boolean, enable or not
+	 * @return void
+	 */
+	WPGMZA.LeafletMap.prototype.enableScaleControl = function(enable)
+	{
+		if(!this.leafletMap)
+			return;
+
+		if(this.scaleControl){
+			this.scaleControl.remove();
+			this.scaleControl = null;
+		}
+
+		if(enable){
+			const imperial = (this.settings.store_locator_distance == WPGMZA.Distance.MILES);
+
+			this.scaleControl = L.control.scale({
+				imperial: imperial,
+				metric: !imperial,
+				position: 'bottomleft'
+			}).addTo(this.leafletMap);
 		}
 	}
 

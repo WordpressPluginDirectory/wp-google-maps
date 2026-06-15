@@ -31,7 +31,7 @@
 			<?php
 			echo sprintf( __( '<h3>We need your love!</h3><p>If you are enjoying our plugin, please consider <a href="%1$s" target="_blank" class="button-border button-border__green">reviewing WP Go Maps</a>. It would mean the world to us! If you are experiencing issues with the plugin, please <a href="%2$s" target="_blank"  class="button-border button-border__green">contact us</a> and we will help you as soon as humanly possible!</p>', 'wp-google-maps' ),
 				'https://wordpress.org/support/view/plugin-reviews/wp-google-maps?filter=5',
-				'http://www.wpgmaps.com/contact-us/'
+				'http://www.wpgmaps.com/contact-us/?utm_source=plugin&amp;utm_medium=link&amp;utm_campaign=maplist-contactus-atlas-novus-v10'
 			);
 			?>
 			
@@ -70,7 +70,7 @@
 				?>
 			</span>
 			<a target="_BLANK" class="wpgmza-button wpgmza-button-call-to-action"
-				href="<?php esc_attr_e(\WPGMZA\Plugin::getProLink("https://www.wpgmaps.com/purchase-professional-version/?utm_source=plugin&amp;utm_medium=link&amp;utm_campaign=mappage-cta-btn-atlas-novus-v10" . wpgmzaGetUpsellLinkParams()));  ?>">
+				href="<?php echo esc_attr(\WPGMZA\Plugin::getProLink("https://www.wpgmaps.com/purchase-professional-version/?utm_source=plugin&amp;utm_medium=link&amp;utm_campaign=mappage-cta-btn-atlas-novus-v10" . wpgmzaGetUpsellLinkParams()));  ?>">
 				<?php _e('Unlock Unlimited Maps', 'wp-google-maps'); ?> 
 			</a>
 		</p>

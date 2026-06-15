@@ -47,6 +47,7 @@ class Plugin extends Factory
 	const PAGE_ADVANCED			= "advanced";
 	const PAGE_CUSTOM_FIELDS	= "custom-fields";
 	const PAGE_INSIGHTS 		= "insights";
+	const PAGE_PRO_FEATURES		= "pro-features";
 	
 	const MARKER_PULL_DATABASE	= "0";
 	const MARKER_PULL_XML		= "1";
@@ -64,6 +65,7 @@ class Plugin extends Factory
 	private $_gdprCompliance;
 	private $_restAPI;
 	private $_gutenbergIntegration;
+	private $_elementorIntegration;
 	private $_pro7Compatiblity;
 	private $_pro9Compatibility;
 	private $_pro10Compatibility;
@@ -128,10 +130,12 @@ class Plugin extends Factory
 		$this->_pro7Compatiblity = new Pro7Compatibility();
 		$this->_pro9Compatibility = new Pro9Compatibility();
 		$this->_pro10Compatibility = new Pro10Compatibility($this->_settings);
+		$this->_proAtlasMajorCompatibility = new ProAtlasMajorCompatibility();
 
 		$this->_restAPI = RestAPI::createInstance();
 		
 		$this->_gutenbergIntegration = Integration\Gutenberg::createInstance();
+		$this->_elementorIntegration = Integration\Elementor::createInstance();
 	
 		if(!empty($this->settings->wpgmza_maps_engine))
 			$this->settings->engine = $this->settings->wpgmza_maps_engine;
@@ -223,6 +227,11 @@ class Plugin extends Factory
 				define('WPE_GOVERNOR', false);
 			}
 		}
+
+		/* WP Rocket Exclusion - Inline JS */
+		if(empty($this->settings->disable_wprocket_compatibility_fix)){
+			add_filter('rocket_defer_inline_exclusions', array($this, 'enableWPRocketCompat'), 10, 1);
+		}
 	}
 	
 	public function __set($name, $value)
@@ -263,16 +272,32 @@ class Plugin extends Factory
 	{
 		switch($name)
 		{
+			/* Keep this list in sync with the cases handled by __get()
+			 * above. Without that, `isset($wpgmza->internalEngine)` (and
+			 * therefore `empty($wpgmza->internalEngine)`) returns false
+			 * for properties that ARE accessible via __get() — silently
+			 * breaking any caller that guards with empty()/isset(). The
+			 * Atlas Major Pro panel injection in ProMapEditPage hit this:
+			 * wpgmza_pro_is_atlas_major()'s `empty($wpgmza->internalEngine)`
+			 * check returned true even though the engine was set, causing
+			 * the entire Pro live-preview template injection block to be
+			 * skipped. */
 			case 'settings':
 			case 'stylingSettings':
 			case 'gdprCompliance':
 			case 'restAPI':
 			case 'spatialFunctionPrefix':
 			case 'database':
+			case 'dynamicTranslations':
+			case 'adminUI':
+			case 'scriptLoader':
+			case 'internalEngine':
+			case 'previewMode':
+			case 'adminNotices':
 				return true;
 				break;
 		}
-		
+
 		return false;
 	}
 	
@@ -430,7 +455,7 @@ class Plugin extends Factory
 		/* Developer Hook (Filter) - Add or alter localization variables */
 		$result = apply_filters('wpgmza_plugin_get_localized_data', array(
 			'adminurl'				=> admin_url(),
-			'siteHash'				=> md5(site_url()),
+			'siteHash'				=> Plugin::getSiteHash(),
 			'ajaxurl' 				=> admin_url('admin-ajax.php'),
 			'pluginDirURL'			=> plugin_dir_url(WPGMZA_FILE),
 			
@@ -451,6 +476,20 @@ class Plugin extends Factory
 			'stylingSettings'		=> $stylingSettings,
 			'currentPage'			=> $this->getCurrentPage(),
 			'tileServer'			=> $tileServer,
+
+			/* The resolved internal engine ("atlas-major" / "atlas-novus" /
+			   "legacy"). Distinct from `settings.internal_engine` which is
+			   the RAW stored DB value — that field is empty for brand-new
+			   installs that haven't saved settings yet, even though the
+			   plugin is actually rendering Atlas Major (the default).
+			   `getStoredEngine()` returns the validated/active engine via
+			   InternalEngine::validateEngine() so it's always populated.
+			   Used by enhanced-autocomplete (map-edit-page.js) for cloud
+			   telemetry — without this, new-user requests omit the build
+			   parameter until the user saves settings once. */
+			'internalEngine'		=> (!empty($this->internalEngine) && method_exists($this->internalEngine, 'getStoredEngine'))
+										? $this->internalEngine->getStoredEngine()
+										: null,
 			
 			'userCanAdministrator'	=> (current_user_can('administrator') ? 1 : 0),
 			'serverCanInflate'		=> RestAPI::isCompressedPathVariableSupported(),
@@ -459,12 +498,30 @@ class Plugin extends Factory
 			'api_consent_html'		=> !empty($this->gdprCompliance) ? $this->gdprCompliance->getConsentPromptHTML() : "",
 			'basic_version'			=> $this->getBasicVersion(),
 			'_isProVersion'			=> $this->isProVersion(),
-			
+
+			/**
+			 * Extra query-string fragment appended to enhanced-autocomplete
+			 * requests sent to the node server (wpgmaps.us-3.evennode.com).
+			 * Default is empty so basic-only installs add nothing.
+			 *
+			 * Filter contract — `wpgmza_enhanced_autocomplete_extra_params`:
+			 *   Input:  string — current extras (default '').
+			 *   Output: string — URL-encoded query-string fragment (key=value
+			 *           pairs joined by '&'), suitable for direct '&'-concat
+			 *           onto the autocomplete URL. NO leading '&' or '?'.
+			 *           Return '' to skip.
+			 *
+			 * Pro hooks this in ProPlugin::filterEnhancedAutocompleteExtraParams
+			 * (class.pro-plugin.php) to emit 'pro=1&pro_version=…'.
+			 */
+			'enhancedAutocompleteExtraParams' => apply_filters('wpgmza_enhanced_autocomplete_extra_params', ''),
+
 			'defaultMarkerIcon'		=> Marker::DEFAULT_ICON,
 			'markerXMLPathURL'		=> Map::getMarkerXMLPathURL(),
 
 			'is_admin'				=> (is_admin() ? 1 : 0),
 			'locale'				=> get_locale(),
+				'wpml_language'			=> defined('ICL_LANGUAGE_CODE') ? ICL_LANGUAGE_CODE : null,
 			
 			'isServerIIS'			=> (isset($_SERVER["SERVER_SOFTWARE"]) && preg_match('/microsoft-iis/i', $_SERVER["SERVER_SOFTWARE"])),
 			'labelpointIcon'		=> plugin_dir_url(WPGMZA_FILE) . 'images/label-point.png',
@@ -556,6 +613,10 @@ class Plugin extends Factory
 
 			case 'wp-google-maps-menu-insights':
 				return Plugin::PAGE_INSIGHTS;
+				break;
+
+			case 'wp-google-maps-menu-pro-features':
+				return Plugin::PAGE_PRO_FEATURES;
 				break;
 		}
 		
@@ -870,9 +931,14 @@ class Plugin extends Factory
 	public function onLoadTextDomainMOFile($mofile, $domain)
 	{
 		if($domain == 'wp-google-maps' && !class_exists("WPML_Translation_Management") && function_exists('get_user_locale')){
-			$mofile = plugin_dir_path(__DIR__) . 'languages/wp-google-maps-' . \get_user_locale() . '.mo';
+			$locale = (!empty($this->settings->locale_override) && $this->settings->locale_override !== 'site-default') ? $this->settings->locale_override : \get_user_locale();
+			$bundled = plugin_dir_path(__DIR__) . 'languages/wp-google-maps-' . $locale . '.mo';
+
+			if(file_exists($bundled)){
+				return $bundled;
+			}
 		}
-		
+
 		return $mofile;
 	}
 
@@ -1074,6 +1140,41 @@ class Plugin extends Factory
 			
 		}
 	}
+
+	/**
+	 * Excludes our inline JS from WP Rocket defer loading
+	 * 
+	 * This is done to prevent an asset timing incompatibility which prevents map initialization
+	 * 
+	 * This means users do not need to configure additional settings to allow WP Go Maps to function well with WP Rocket
+	 * 
+	 * Importantly, all assets can still be deferred, but our initializer, and settings will not be deferred loaded
+	 * 
+	 * @param mixed $excludeList The current list of exclusions
+	 * 
+	 * @return array
+	 */
+	public function enableWPRocketCompat($excludeList){
+		if(!is_array($excludeList)){
+			/* Not yet in array format */
+			$excludeList = array();
+		}
+
+		/* Add our inline JS Localizer block - We still have a delayed loader system integrated here */
+		$excludeList[] = 'wpgmza-js-extra';
+
+		return $excludeList;
+	}
+
+	public static function getSiteHash(){
+		$hash = get_option('wpgmza_site_hash');
+		if(empty($hash)){
+			$hash = md5( uniqid( '', true ) . site_url() . microtime( true ) );
+			update_option('wpgmza_site_hash', $hash, false);
+		}
+		return $hash;
+	}
+
 
 	public static function get_rss_feed_as_html($feed_url, $max_item_cnt = 10, $show_date = true, $show_description = true, $max_words = 0, $cache_timeout = 7200, $cache_prefix = "/tmp/rss2html-") {
 	    $result = "";

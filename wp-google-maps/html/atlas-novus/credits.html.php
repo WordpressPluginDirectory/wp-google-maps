@@ -112,6 +112,9 @@
 	<h2><?php _e("Security","wp-google-maps"); ?></h2>
 	<div class="credit-container">
 		<ul class="list-chain">
+			<li title="Organization: Patchstack">Austin Ginder</li>
+			<li title="Organization: Bashu | KCSC | Wordfence">Nguyen Ba Hung</li>
+			<li title="Organization: Nagasaki Prefectural University | Wordfence">Moose Love</li>
 			<li title="Organization: Jetpack">Animesh Gaurav</li>
 			<li title="Organization: CleanTalk Inc | Wordfence">Dmitrii Ignatyev</li>
 			<li title='Organization: Patchstack'>Joshua Chan</li>
@@ -119,8 +122,10 @@
 			<li title='Organization: Wordfence'>Marco Wotschka</li>
 			<li title='Organization: Wordfence'>Akbar Kustirama</li>
 			<li title='Organization: Wordfence'>Richard Telleng</li>
+			<li title='Organization: Wordfence'>Thanh Diem</li>
 			<li title='Organization: Patchstack'>Rafie Muhammad</li>
 			<li title='Organization: WPScan'>Marc</li>
+			<li title='Organization: Fraudless.tech'>Ilyess Ghalem</li>
 			<li>Visse</li>
 			<li>Mohammed Adam</li>
 			<li>Thomas Chauchefoin</li>
@@ -195,6 +200,7 @@
 	<h2><?php _e("Translators","wp-google-maps"); ?></h2>
 	<div class="credit-container">
 		<ul class="list-chain">
+			<li>Madevcomfr</li>
 			<li>Christian Svendsen</li>
 			<li>Attila</li>
 			<li>Gerard Ayter Codina</li>
@@ -240,7 +246,7 @@
 
 	<h2><?php _e("Ready to get started?", "wp-google-maps"); ?></h2>                
     <a class="wpgmza-button" href="<?php echo admin_url('admin.php?page=wp-google-maps-menu&amp;action=installer&amp;autoskip=true'); ?>">
-        <?php echo __("Let's get started","wp-google-maps"); ?>
+        <?php esc_html_e("Let's get started","wp-google-maps"); ?>
         <i class="fa fa-chevron-right" aria-hidden="true"></i>
     </a>
 

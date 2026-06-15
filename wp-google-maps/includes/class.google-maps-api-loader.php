@@ -92,11 +92,11 @@ class GoogleMapsAPILoader
 				<div class="notice notice-warning is-dismissable">
 					<p>
 						<?php
-						_e( sprintf(
-							'WP Go Maps: You have selected the Google Maps engine, but the Google Maps API is not being loaded for the following reason: %s.<br/>We recommend you uncheck "Do not load Google Maps API" and set "Load Maps Engine API" to "Where Required" in your <a href="%s">maps settings page</a>', 
+						printf(
+							__('WP Go Maps: You have selected the Google Maps engine, but the Google Maps API is not being loaded for the following reason: %s.<br/>We recommend you uncheck "Do not load Google Maps API" and set "Load Maps Engine API" to "Where Required" in your <a href="%s">maps settings page</a>', 'wp-google-maps'),
 							$status->message,
 							admin_url('admin.php?page=wp-google-maps-menu-settings')
-						));
+						);
 						?>
 					</p>
 				</div>
@@ -114,7 +114,7 @@ class GoogleMapsAPILoader
 		global $wpgmza;
 		
 		// Locale
-		$locale = get_locale();
+		$locale = (!empty($wpgmza->settings->locale_override) && $wpgmza->settings->locale_override !== 'site-default') ? $wpgmza->settings->locale_override : get_locale();
 		
 		switch($locale)
 		{
@@ -152,10 +152,7 @@ class GoogleMapsAPILoader
 		
 		// Libraries
 		$libraries = array('geometry', 'places', 'visualization', 'marker');
-		
-		if($wpgmza->getCurrentPage() == Plugin::PAGE_MAP_EDIT)
-			$libraries[] = 'drawing';
-		
+
 		$params['libraries'] = implode(',', $libraries);
 
 		if(!empty($wpgmza->settings->enable_google_api_async_param)){
@@ -349,7 +346,7 @@ class GoogleMapsAPILoader
 				 *  V9 Will move away from this switch, and instead use an array with a filter for devs to extend further as needed
 				*/
 				switch($post->post_type){
-					case 'wpsl_stores';
+					case 'wpsl_stores':
 						$status->message = 'Page is explicitly excluded in settings';
 						$status->code = GoogleMapsAPILoader::PAGE_EXPLICITLY_EXCLUDED;
 						return false;

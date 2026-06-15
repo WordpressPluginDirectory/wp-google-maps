@@ -7,7 +7,6 @@ class LeafletThemePanel extends DOMDocument{
 		global $wpgmza;
 		DOMDocument::__construct();
 		$this->loadPHPFile($wpgmza->internalEngine->getTemplate('leaflet-theme-panel.html.php'));
-
 		$tileServer = "https://{a-c}.tile.openstreetmap.org/{z}/{x}/{y}.png";
 		if(!empty($wpgmza->settings) && !empty($wpgmza->settings->tile_server_url)){
 			$tileServer = $wpgmza->settings->tile_server_url;
@@ -132,7 +131,10 @@ class LeafletThemePanel extends DOMDocument{
 					$filter = $image->parentNode->getAttribute('data-filter');
 					$image->setAttribute('style', "filter: {$filter};");
 
-					$image->setAttribute('onerror', "this.parentElement.classList.add('theme-panel-error');");
+					/* Set the error class AND a translated data-am-label so the
+					   CSS error caption ("Could not fetch preview") translates. */
+					$themePreviewFailLabel = esc_attr( __('Could not fetch preview', 'wp-google-maps') );
+					$image->setAttribute('onerror', "this.parentElement.classList.add('theme-panel-error'); this.parentElement.setAttribute('data-am-label', '" . $themePreviewFailLabel . "');");
 				}
 			}
 		}

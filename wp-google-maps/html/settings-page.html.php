@@ -156,7 +156,7 @@
 		<fieldset>
 			<legend>
 				<?php esc_html_e('User Interface Style', 'wp-google-maps'); ?>
-				(<em><a href='https://www.wpgmaps.com/help/docs/user-interface-style-legacy/' target='_BLANK'><?php esc_html_e('examples', 'wp-google-maps'); ?></a></em>)
+				(<em><a href='https://www.wpgmaps.com/help/docs/user-interface-style-legacy/?utm_source=plugin&amp;utm_medium=link&amp;utm_campaign=settings-interface-style-docs-legacy-v10' target='_BLANK'><?php esc_html_e('examples', 'wp-google-maps'); ?></a></em>)
 			</legend>
 			
 			<ul>
@@ -233,14 +233,14 @@
 				<li>
 					<label>
 						<input name='wpgmza_settings_cat_logic' type='radio' id='wpgmza_settings_cat_logic_or' value='0' checked="checked" />
-						<?php echo __("OR"," wp-google-maps") . " &nbsp; (<span class='description'>" . __("Example: Show the marker if it belongs to Cat A _OR_ Cat B.", "wp-google-maps") . "</span>)"; ?>
+						<?php echo __("OR","wp-google-maps") . " &nbsp; (<span class='description'>" . __("Example: Show the marker if it belongs to Cat A _OR_ Cat B.", "wp-google-maps") . "</span>)"; ?>
 					</label>
 				</li>
 
 				<li>
 					<label>
                     	<input name='wpgmza_settings_cat_logic' type='radio' id='wpgmza_settings_cat_logic_and' value='1'/>
-                    	<?php  echo __("AND"," wp-google-maps") . " &nbsp; (<span class='description'>" . __("Example: Only show the marker if it belongs to Cat A _AND_ Cat B.", "wp-google-maps") . "</span>)"; ?>
+                    	<?php  echo __("AND","wp-google-maps") . " &nbsp; (<span class='description'>" . __("Example: Only show the marker if it belongs to Cat A _AND_ Cat B.", "wp-google-maps") . "</span>)"; ?>
 					</label>
 				</li>
 			</ul>
@@ -1439,7 +1439,7 @@
 					<small>
 						<?php
 						_e("This API key can be obtained from 
-						the <a href='https://wpgmaps.com/google-maps-developer-console/' target='_BLANK'>Google Developers Console</a>. Our <a href='https://www.wpgmaps.com/help/docs/creating-a-google-maps-api-key/' target='_BLANK'>documentation</a> provides a full guide on how to obtain this.", "wp-google-maps");
+						the <a href='https://wpgmaps.com/google-maps-developer-console/?utm_source=plugin&amp;utm_medium=link&amp;utm_campaign=settings-dev-console-legacy-v10' target='_BLANK'>Google Developers Console</a>. Our <a href='https://www.wpgmaps.com/help/docs/creating-a-google-maps-api-key/?utm_source=plugin&amp;utm_medium=link&amp;utm_campaign=settings-create-api-key-legacy-v10' target='_BLANK'>documentation</a> provides a full guide on how to obtain this.", "wp-google-maps");
 						?>
 					</small>
 				</p>
@@ -1466,7 +1466,7 @@
 		
 		<fieldset data-required-maps-engine="open-layers">
 			<legend>
-				<?php echo __('OpenLayers Tileserver Key', 'wp-google-maps'); ?>
+				<?php esc_html_e('OpenLayers Tileserver Key', 'wp-google-maps'); ?>
 			</legend>
 			<label>
 				<input name='open_layers_api_key'/>
@@ -1482,7 +1482,7 @@
 
 		<fieldset data-required-maps-engine="open-layers" class="wpgmza-pro-feature">
 			<legend class="wpgmza-pro-feature-hide">
-				<?php echo __('OpenRouteService Key', 'wp-google-maps'); ?>
+				<?php esc_html_e('OpenRouteService Key', 'wp-google-maps'); ?>
 			</legend>
 			<label class="wpgmza-pro-feature-hide">
 				<input name='open_route_service_key'/>
@@ -1533,7 +1533,7 @@
 			
 			<p>
 				<label>
-					<button danger="wpgmza_destroy_all_data" name="wpgmza_destroy_data" class="wpgmza_destroy_data wpgmza_general_btn button button-secondary">Complete Reset</button>
+					<button danger="wpgmza_destroy_all_data" name="wpgmza_destroy_data" class="wpgmza_destroy_data wpgmza_general_btn button button-secondary"><?php esc_html_e('Complete Reset', 'wp-google-maps'); ?></button>
 					
 						<small class="wpgmza-button-hint-small">
 							<?php
@@ -1546,7 +1546,7 @@
 			<p>&nbsp;</p>
 			<p>
 				<label>
-					<button danger="wpgmza_reset_all_settings" name="wpgmza_destroy_data" class="wpgmza_destroy_data wpgmza_general_btn button button-secondary">Reset all settings</button>
+					<button danger="wpgmza_reset_all_settings" name="wpgmza_destroy_data" class="wpgmza_destroy_data wpgmza_general_btn button button-secondary"><?php esc_html_e('Reset all settings', 'wp-google-maps'); ?></button>
 					
 						<small class="wpgmza-button-hint-small">
 							<?php
@@ -1559,7 +1559,7 @@
 			<p>&nbsp;</p>
 			<p class="wpgmza-pro-feature-hide">
 				<label>
-					<button danger="wpgmza_destroy_maps" name="wpgmza_destroy_data" class="wpgmza_destroy_data wpgmza_general_btn button button-secondary">Delete all maps</button>
+					<button danger="wpgmza_destroy_maps" name="wpgmza_destroy_data" class="wpgmza_destroy_data wpgmza_general_btn button button-secondary"><?php esc_html_e('Delete all maps', 'wp-google-maps'); ?></button>
 					
 						<small class="wpgmza-button-hint-small">
 							<?php
@@ -1571,7 +1571,7 @@
 			</p>
 			<p>
 				<label>
-					<button danger="wpgmza_destroy_markers" name="wpgmza_destroy_data" class="wpgmza_destroy_data wpgmza_general_btn button button-secondary">Delete all markers</button>
+					<button danger="wpgmza_destroy_markers" name="wpgmza_destroy_data" class="wpgmza_destroy_data wpgmza_general_btn button button-secondary"><?php esc_html_e('Delete all markers', 'wp-google-maps'); ?></button>
 					
 						<small class="wpgmza-button-hint-small">
 							<?php
@@ -1583,7 +1583,7 @@
 			</p>
 			<p>
 				<label>
-					<button danger="wpgmza_destroy_shapes" name="wpgmza_destroy_data" class="wpgmza_destroy_data wpgmza_general_btn button button-secondary">Delete all shapes</button>
+					<button danger="wpgmza_destroy_shapes" name="wpgmza_destroy_data" class="wpgmza_destroy_data wpgmza_general_btn button button-secondary"><?php esc_html_e('Delete all shapes', 'wp-google-maps'); ?></button>
 					
 						<small class="wpgmza-button-hint-small">
 							<?php
@@ -1596,8 +1596,8 @@
 
 			<p>&nbsp;</p>
 			<p class="wpgmza-pro-feature-hide">
-				<button class="wpgmza_general_btn button button-secondary wpgmza-performance-tool-button" data-tool-type="add_db_indexing">Add Indexes</button>
-				<button class="wpgmza_general_btn button button-secondary wpgmza-performance-tool-button" data-tool-type="remove_db_indexing">Remove Indexes</button>
+				<button class="wpgmza_general_btn button button-secondary wpgmza-performance-tool-button" data-tool-type="add_db_indexing"><?php esc_html_e('Add Indexes', 'wp-google-maps'); ?></button>
+				<button class="wpgmza_general_btn button button-secondary wpgmza-performance-tool-button" data-tool-type="remove_db_indexing"><?php esc_html_e('Remove Indexes', 'wp-google-maps'); ?></button>
 				
 				<small class="wpgmza-button-hint-small">
 					<?php esc_html_e('Add/remove performance indexes from the database tables that may improve query times. Only do this if suggested by our support team', 'wp-google-maps'); ?>
@@ -1787,6 +1787,7 @@
 				_e('WP Go Maps GDPR options have been disabled as they are fully controlled by Complianz', 'wp-google-maps');
 			?>
 		</span>
+		<span class="wpgmza-wpml-notice wpgmza-hidden"></span>
 	</div>
 
 	
@@ -1879,7 +1880,7 @@
 	
 	<p>
 		<?php
-		_e('For more information about WPGM and GDPR compliance, please refer to our <a href="https://www.wpgmaps.com/gdpr/">GDPR information page</a> and our <a href="https://www.wpgmaps.com/privacy-policy/">Privacy Policy</a>', 'wp-google-maps');
+		_e('For more information about WPGM and GDPR compliance, please refer to our <a href="https://www.wpgmaps.com/gdpr/?utm_source=plugin&amp;utm_medium=link&amp;utm_campaign=settings-gdpr-legacy-v10">GDPR information page</a> and our <a href="https://www.wpgmaps.com/privacy-policy/?utm_source=plugin&amp;utm_medium=link&amp;utm_campaign=settings-gdpr-privacy-legacy-v10">Privacy Policy</a>', 'wp-google-maps');
 		?>
 	</p>
 </div>

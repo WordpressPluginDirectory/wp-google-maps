@@ -33,6 +33,13 @@ class SettingsPage extends Page {
 			$this->form->querySelector('input[name="wpgmza_gdpr_require_consent_before_load"]')->setAttribute('disabled', 'disabled');
 		}
 
+		if(class_exists("WPML_Translation_Management")){
+			$this->form->querySelector('.wpgmza-wpml-notice')->removeClass('wpgmza-hidden');
+			if($localOverrideSelect = $this->form->querySelector('select[name="locale_override"]')){
+				$localOverrideSelect->setAttribute('disabled', 'disabled');
+			}
+		}
+
 		/* Tile Server Select */
 		if($tileServerSelectContainer = $this->document->querySelector('[data-tile-server-select-container]')) {
 			$tileServerSelect = new TileServerSelect(array('name' => 'tile_server_url'));
@@ -66,6 +73,10 @@ class SettingsPage extends Page {
 		} else {
 			if(!$this->isNonceValid($this->form, $_POST['nonce']))
 				throw new \Exception("Invalid nonce");
+
+			if(!$wpgmza->isUserAllowedToEdit()){
+				throw new \Exception("You do not have permission to perform this action");
+			}
 			
 			$oldPullMethod	= $wpgmza->settings->wpgmza_settings_marker_pull;
 			
@@ -107,7 +118,7 @@ class SettingsPage extends Page {
 			/* Developer Hook (Action) - Take action before the final storage redirect completes */
 			do_action('wpgmza_global_settings_before_redirect', $wpgmza);
 			
-			wp_redirect($_SERVER['HTTP_REFERER']);
+			wp_redirect(esc_url_raw(wp_unslash($_SERVER['HTTP_REFERER'])));
 			return;
 		}
 	}
@@ -119,7 +130,7 @@ class SettingsPage extends Page {
 	public static function dangerZoneDelete(){
 		global $wpgmza;
 		
-		if(!wp_verify_nonce($_POST['nonce'], 'wpgmza_maps_settings_danger_zone_delete_data')){
+		if(!wp_verify_nonce(sanitize_text_field(wp_unslash($_POST['nonce'])), 'wpgmza_maps_settings_danger_zone_delete_data')){
 			http_response_code(403);
 			exit;
 		}

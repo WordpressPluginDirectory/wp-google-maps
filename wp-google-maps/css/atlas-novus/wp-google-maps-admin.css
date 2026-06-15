@@ -350,6 +350,7 @@
 .wpgmza-wrap .wpgmza-editor .sidebar .feature-list table.dataTable thead td{
     border-bottom: 1px solid var(--wpgmza-color-light);
     border-top: 1px solid var(--wpgmza-color-light);
+    text-align: center;
 }
 
 .wpgmza-wrap .wpgmza-datatable-container table.dataTable tr td[data-wpgmza-column-name="mark"],
@@ -368,10 +369,10 @@
     border: none;
 }
 
-.wpgmza-wrap .wpgmza-datatable-container table.dataTable.display tbody tr>.sorting_1, 
-.wpgmza-wrap .wpgmza-datatable-container table.dataTable.order-column.stripe tbody tr>.sorting_1,
-.wpgmza-wrap .wpgmza-editor .sidebar .feature-list table.dataTable.display tbody tr>.sorting_1, 
-.wpgmza-wrap .wpgmza-editor .sidebar .feature-list table.dataTable.order-column.stripe tbody tr>.sorting_1{
+.wpgmza-wrap .wpgmza-datatable-container table.dataTable.display tbody tr>.dt-ordering-1, 
+.wpgmza-wrap .wpgmza-datatable-container table.dataTable.order-column.stripe tbody tr>.dt-ordering-1,
+.wpgmza-wrap .wpgmza-editor .sidebar .feature-list table.dataTable.display tbody tr>.dt-ordering-1, 
+.wpgmza-wrap .wpgmza-editor .sidebar .feature-list table.dataTable.order-column.stripe tbody tr>.dt-ordering-1{
     background: none;
 }
 
@@ -403,53 +404,67 @@
 .wpgmza-wrap .wpgmza-editor .sidebar .feature-list table.dataTable.display tbody tr td{
     border-bottom: 1px solid var(--wpgmza-color-light);
     border-top: none;
+    box-shadow: none;
 }
 
 .wpgmza-wrap .wpgmza-datatable-container .dataTable,
 .wpgmza-wrap .wpgmza-editor .sidebar .dataTable {
     width: 100% !important;
     padding-top: 20px;
+    padding-bottom: 20px;
 }
 
-.wpgmza-wrap .wpgmza-datatable-container .dataTables_length,
-.wpgmza-wrap .wpgmza-datatable-container .dataTables_info,
+.wpgmza-wrap .wpgmza-datatable-container .dt-length,
+.wpgmza-wrap .wpgmza-datatable-container .dt-info,
 .wpgmza-wrap .wpgmza-datatable-container .wpgmza-marker-listing__actions,
-.wpgmza-wrap .wpgmza-editor .sidebar .feature-list .dataTables_length,
-.wpgmza-wrap .wpgmza-editor .sidebar .feature-list .dataTables_info,
+.wpgmza-wrap .wpgmza-editor .sidebar .feature-list .dt-length,
+.wpgmza-wrap .wpgmza-editor .sidebar .feature-list .dt-info,
 .wpgmza-wrap .wpgmza-editor .sidebar .feature-list .wpgmza-marker-listing__actions {
     padding-left: 20px;
 }
 
-.wpgmza-wrap .wpgmza-datatable-container .dataTables_filter,
-.wpgmza-wrap .wpgmza-datatable-container .dataTables_paginate,
-.wpgmza-wrap .wpgmza-editor .sidebar .feature-list .dataTables_filter,
-.wpgmza-wrap .wpgmza-editor .sidebar .feature-list .dataTables_paginate{
+.wpgmza-wrap .wpgmza-datatable-container .dt-search,
+.wpgmza-wrap .wpgmza-datatable-container .dt-paging,
+.wpgmza-wrap .wpgmza-editor .sidebar .feature-list .dt-search,
+.wpgmza-wrap .wpgmza-editor .sidebar .feature-list .dt-paging{
     padding-right: 20px;
+}
+
+.wpgmza-wrap .wpgmza-datatable-container .dt-input,
+.wpgmza-wrap .wpgmza-editor .sidebar .dt-input{
+    font-size: 11px;
+    padding: 3px 7px;
+}
+
+.wpgmza-wrap .wpgmza-datatable-container select.dt-input,
+.wpgmza-wrap .wpgmza-editor .sidebar select.dt-input{
+    padding-right: 18px;
 }
 
 .wpgmza-wrap .wpgmza-datatable-container .dataTable tbody tr td,
 .wpgmza-wrap .wpgmza-editor .sidebar .feature-list .dataTable tbody tr td {
     text-align: center;
+    box-shadow: none;
 }
 
-.wpgmza-wrap .wpgmza-datatable-container .dataTables_paginate .paginate_button:hover,
-.wpgmza-wrap .wpgmza-editor .sidebar .feature-list .dataTables_paginate .paginate_button:hover{
+.wpgmza-wrap .wpgmza-datatable-container .dt-paging .dt-paging-button:hover,
+.wpgmza-wrap .wpgmza-editor .sidebar .feature-list .dt-paging .dt-paging-button:hover{
     background: var(--wpgmza-color-light);
     border: 1px solid var(--wpgmza-color-light);
     color: var(--wpgmza-color-charcoal) !important;
     border-radius: 4px;
 }
 
-.wpgmza-wrap .wpgmza-datatable-container .dataTables_paginate .paginate_button.current,
-.wpgmza-wrap .wpgmza-editor .sidebar .feature-list .dataTables_paginate .paginate_button.current{
+.wpgmza-wrap .wpgmza-datatable-container .dt-paging .dt-paging-button.current,
+.wpgmza-wrap .wpgmza-editor .sidebar .feature-list .dt-paging .dt-paging-button.current{
     background: var(--wpgmza-color-dark);
     border: 1px solid var(--wpgmza-color-dark);
     border-radius: 4px;
     color: var(--wpgmza-color-white) !important;
 }
 
-.wpgmza-wrap .wpgmza-datatable-container .dataTables_paginate .paginate_button.current:hover,
-.wpgmza-wrap .wpgmza-editor .sidebar .feature-list .dataTables_paginate .paginate_button.current:hover{
+.wpgmza-wrap .wpgmza-datatable-container .dt-paging .dt-paging-button.current:hover,
+.wpgmza-wrap .wpgmza-editor .sidebar .feature-list .dt-paging .dt-paging-button.current:hover{
     background: var(--wpgmza-color-grey-900);
     border: 1px solid var(--wpgmza-color-grey-900);
     color: var(--wpgmza-color-white) !important;
@@ -457,17 +472,18 @@
 
 .wpgmza-wrap .wpgmza-datatable-container.wpgmza-datatable-container-maps table.dataTable.display tbody tr > td{
     transition: background-color 0.2s ease;
+    box-shadow: none;
 }
 
 .wpgmza-wrap .wpgmza-datatable-container.wpgmza-datatable-container-maps table.dataTable.display tbody tr:hover > td,
-.wpgmza-wrap .wpgmza-datatable-container.wpgmza-datatable-container-maps table.dataTable.display tbody tr:hover > td.sorting_1{
+.wpgmza-wrap .wpgmza-datatable-container.wpgmza-datatable-container-maps table.dataTable.display tbody tr:hover > td.dt-ordering-1{
     cursor: pointer;
     background: var(--wpgmza-color-grey-50);
 }
 
 /* Datatables preloader - Had to recreate this here, as it is not possible to override the HTML entirely */
-.wpgmza-wrap .wpgmza-datatable-container .dataTables_processing:before,
-.wpgmza-wrap .wpgmza-editor .sidebar .feature-list .dataTables_processing:before {
+.wpgmza-wrap .wpgmza-datatable-container .dt-processing:before,
+.wpgmza-wrap .wpgmza-editor .sidebar .feature-list .dt-processing:before {
   content: "";
   height: 60px;
   width: 60px;
@@ -476,7 +492,7 @@
   border: 5px solid var(--wpgmza-color-grey-500);
   border-radius: 60px;
   left: calc(50% - 30px);
-  top: calc(50% - 50px);
+  top: calc(50% - 30px);
 
   border-bottom-color: transparent;
   box-sizing: border-box;
@@ -485,8 +501,8 @@
   animation-iteration-count: infinite;
 }
 
-.wpgmza-wrap .wpgmza-datatable-container .dataTables_processing:after,
-.wpgmza-wrap .wpgmza-editor .sidebar .feature-list .dataTables_processing:after {
+.wpgmza-wrap .wpgmza-datatable-container .dt-processing:after,
+.wpgmza-wrap .wpgmza-editor .sidebar .feature-list .dt-processing:after {
     content: "\f041";
     font-family: "FontAwesome";
     width: 60px;
@@ -494,7 +510,7 @@
     position: absolute;
     font-size: 25px;
     left: calc(50% - 30px);
-    top: calc(50% - 50px);
+    top: calc(50% - 30px);
     text-align: center;
     line-height: 60px;
     color: var(--wpgmza-color-grey-700);
@@ -503,12 +519,12 @@
     animation: wpgmzaPulseFade 1s forwards;
     animation-iteration-count: infinite;
 }
-.wpgmza-wrap .wpgmza-datatable-container .dataTables_processing,
-.wpgmza-wrap .wpgmza-editor .sidebar .feature-list .dataTables_processing {
+.wpgmza-wrap .wpgmza-datatable-container .dt-processing,
+.wpgmza-wrap .wpgmza-editor .sidebar .feature-list .dt-processing {
     background: var(--wpgmza-color-white);
     color: var(--wpgmza-color-dark) !important;
     font-size: 1em !important;
-    height: 120px;
+    height: 70px;
     width: 200px;
     text-align: center;
     left: 50%;
@@ -520,6 +536,11 @@
     padding-top: 10px;
     font-size: 14px !important;
     box-shadow: var(--wpgmza-shadow-common);
+}
+
+.wpgmza-wrap .wpgmza-datatable-container .dt-processing > div,
+.wpgmza-wrap .wpgmza-editor .sidebar .feature-list .dt-processing > div{
+    display: none;
 }
 
 .wpgmza-wrap .wpgmza-datatable-container .wpgmza-action-group {
@@ -535,6 +556,16 @@
 
 .wpgmza-wrap .wpgmza-datatable-container .wpgmza-action-group > *:last-child {
     margin-right: 0;
+}
+
+.wpgmza-wrap .wpgmza-editor .sidebar .feature-list .dt-container div.dt-layout-row,
+.wpgmza-wrap .wpgmza-datatable-container  div.dt-container div.dt-layout-row {
+    margin: 0;
+}
+
+.wpgmza-wrap .wpgmza-datatable-container #wpgmza-category-table_wrapper .dataTable tbody tr td:first-child,
+.wpgmza-wrap .wpgmza-datatable-container #wpgmza-category-table_wrapper .dataTable thead tr th:first-child{
+    text-align: left;
 }
 
 .wpgmza-wrap .wpgmza-editor .sidebar .general-info{
@@ -846,8 +877,8 @@
 /* upsell */
 
 .wpgmza-wrap .wpgmza-editor .wpgmza-upsell-pro-pill {
-    background: var(--wpgmza-color-gold);
-    color: var(--wpgmza-color-charcoal);
+    background: var(--wpgmza-color-blue);
+    color: var(--wpgmza-color-white);
     
     text-transform: uppercase;
     font-size: 0.7em;
@@ -942,24 +973,24 @@
 
 .wpgmza-wrap .wpgmza-editor .sidebar .wpgmza-upsell a.wpgmza-upsell-button, 
 .wpgmza-tabs-container .ui-tabs-panel .wpgmza-upsell a.wpgmza-upsell-button{
-    background: var(--wpgmza-color-gold);
+    background: var(--wpgmza-color-blue);
     padding: 3px 8px;
     border-radius: 4px;
     text-decoration: none;
     margin-left: 10px;
     box-shadow: var(--wpgmza-shadow-common);
-    color: var(--wpgmza-color-charcoal);
+    color: var(--wpgmza-color-white);
 }
 
 .wpgmza-wrap .wpgmza-editor .sidebar .wpgmza-upsell a.wpgmza-upsell-button:hover, 
 .wpgmza-tabs-container .ui-tabs-panel .wpgmza-upsell a.wpgmza-upsell-button:hover{
-    background: var(--wpgmza-color-gold-alt);
+    background: var(--wpgmza-color-blue-alt);
 }
 
 .wpgmza-wrap .wpgmza-editor .sidebar .wpgmza-upsell::before, 
 .wpgmza-tabs-container .ui-tabs-panel .wpgmza-upsell::before{
-    background: var(--wpgmza-color-gold);
-    color: var(--wpgmza-color-charcoal);
+    background: var(--wpgmza-color-blue);
+    color: var(--wpgmza-color-white);
     font-weight: 600;
     box-shadow: var(--wpgmza-shadow-common);
 }
@@ -1109,7 +1140,7 @@
 }
 
 .wpgmza-wrap .wpgmza-editor .sidebar .upsell-block-card .upsell-block-card-content .wpgmza-button{
-    background: linear-gradient(30deg, var(--wpgmza-color-gold), var(--wpgmza-color-gold-alt));
+    background: linear-gradient(30deg, var(--wpgmza-color-blue), var(--wpgmza-color-blue-alt));
     background-size: 200%;
     color: var(--wpgmza-color-white);
     font-weight: 600;
@@ -1122,8 +1153,8 @@
     display: block;
     width: fit-content;
     font-weight: 600;
-    background: var(--wpgmza-color-gold);
-    color: var(--wpgmza-color-charcoal);
+    background: var(--wpgmza-color-blue);
+    color: var(--wpgmza-color-white);
     text-transform: uppercase;
     font-size: 0.7em;
     padding: 3px 5px;
@@ -1447,7 +1478,7 @@
 }
 
 .wpgmza-pro-upsell-card.wpgmza-pro-upsell-card-highlight {
-    background: var(--wpgmza-color-gold-light);
+    background: var(--wpgmza-color-blue-light);
     position: relative;
 }
 
@@ -1456,8 +1487,8 @@
     top: 5px; 
     right: 5px;
 
-    background: var(--wpgmza-color-gold);
-    color: var(--wpgmza-color-charcoal);
+    background: var(--wpgmza-color-blue);
+    color: var(--wpgmza-color-white);
 
     font-weight: 600;
     box-shadow: var(--wpgmza-shadow-common);
@@ -1609,7 +1640,7 @@
 }
 
 .wpgmza-card.wpgmza-persistent-notice.special-offer .wpgmza-button {
-    background: linear-gradient(30deg, var(--wpgmza-color-gold), var(--wpgmza-color-gold-alt));
+    background: linear-gradient(30deg, var(--wpgmza-color-blue), var(--wpgmza-color-blue-alt));
     border: none;
     color: var(--wpgmza-color-charcoal);
     font-weight: 600;
@@ -2493,7 +2524,8 @@
 
 .wpgmza-writeup-block h1,
 .wpgmza-writeup-block h2,
-.wpgmza-writeup-block h3{
+.wpgmza-writeup-block h3,
+.wpgmza-writeup-block h4{
   font-weight: 100;
   display: block;
   box-sizing: border-box;
@@ -2514,6 +2546,10 @@
 
 .wpgmza-writeup-block h3{
   font-size: 1.7em;
+}
+
+.wpgmza-writeup-block h4{
+  font-size: 1.4em;
 }
 
 .wpgmza-writeup-block .credit-container{
@@ -2571,6 +2607,99 @@
 .wpgmza-writeup-block .credit-container .list-chain li:last-child:after{
     content: "";
 }
+
+/* Pro features pages overrides */
+.wpgmza-writeup-block.wpgmza-pro-features-page .wpgmza-banner-image-wrapper img{
+    max-width: 400px;
+}
+
+.wpgmza-writeup-block.wpgmza-pro-features-page .wpgmza-pro-features-inline-highlights span{
+    font-weight: 500;
+    color: var(--wpgmza-color-blue);
+}
+
+.wpgmza-writeup-block.wpgmza-pro-features-page .wpgmza-grid:not(.wpgmza-grid-cols-3) .wpgmza-col {
+    align-content: center;
+}
+
+.wpgmza-writeup-block.wpgmza-pro-features-page .wpgmza-grid img {
+    border-radius: 5px; 
+    overflow: hidden;
+    max-width: 85%;
+}
+
+.wpgmza-writeup-block.wpgmza-pro-features-page .wpgmza-grid.wpgmza-grid-cols-3 .wpgmza-col h3,
+.wpgmza-writeup-block.wpgmza-pro-features-page .wpgmza-grid.wpgmza-grid-cols-3 .wpgmza-col h4{
+    margin-bottom: 10px;
+}
+
+.wpgmza-writeup-block.wpgmza-pro-features-page .wpgmza-grid.wpgmza-grid-cols-3 .wpgmza-col > div{
+    font-size: 1.1em;
+    margin-bottom: 5px;
+}
+
+/* Demo Showcase Cards */
+.wpgmza-demo-showcase-grid .wpgmza-demo-showcase-title{
+    margin-bottom: 10px;
+    font-size: 1.3em;
+    font-weight: 500;
+}
+
+.wpgmza-demo-showcase-grid .wpgmza-demo-showcase-card {
+    padding: 0;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.wpgmza-demo-showcase-grid .wpgmza-demo-showcase-card .wpgmza-demo-showcase-image{
+    position: relative;
+    height: 220px;
+    overflow: hidden;
+}
+
+.wpgmza-demo-showcase-grid .wpgmza-demo-showcase-card .wpgmza-demo-showcase-image img{
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.wpgmza-demo-showcase-grid .wpgmza-demo-showcase-card .wpgmza-demo-showcase-image.wpgmza-demo-showcase-fill-scale img{
+    transform: translate(-50%, -50%) scale(1.4);
+}
+
+.wpgmza-demo-showcase-grid .wpgmza-demo-showcase-card > .wpgmza-demo-showcase-title,
+.wpgmza-demo-showcase-grid .wpgmza-demo-showcase-card > .wpgmza-demo-showcase-description,
+.wpgmza-demo-showcase-grid .wpgmza-demo-showcase-card > .wpgmza-demo-showcase-link-wrapper {
+    padding: 0 10px;
+    margin: 0;
+}
+
+.wpgmza-demo-showcase-grid .wpgmza-demo-showcase-card > .wpgmza-demo-showcase-link-wrapper {
+    padding-bottom: 10px;
+}
+
+.wpgmza-demo-showcase-grid .wpgmza-demo-showcase-card .wpgmza-demo-showcase-version {
+    background: var(--wpgmza-color-brand);
+    color: var(--wpgmza-color-white);
+    font-size: 0.6em;
+    padding: 3px 5px;
+    border-radius: 30px;
+    line-height: 1em;
+    margin-left: 12px;
+    top: -2px;
+    display: inline-block;
+    vertical-align: middle;
+    position: relative;
+}
+
+.wpgmza-demo-showcase-grid .wpgmza-demo-showcase-card .wpgmza-demo-showcase-version.wpgmza-demo-showcase-version-pro{
+    background: var(--wpgmza-color-blue);
+}
+
 
 /* Popup notifications */
 .wpgmza-popup-notification:before {
@@ -6196,6 +6325,28 @@
 .wpgmza-tile-server-preview-container.preview-failed[data-failed-fallback="openfreemap-positron"]:before {
     background-image: url('../../images/openfreemap-positron.png');
 }
+
+/* Map Engine Switch Toolbar */
+.wpgmza-wrap .wpgmza-editor .map-container-wrap .wpgmza-engine-switch-toolbar{
+    position: absolute;
+    top: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 50;
+    
+}
+
+.wpgmza-wrap .wpgmza-editor .map-container-wrap .wpgmza-engine-switch-toolbar > div:first-child{
+    font-weight: 500;
+}
+
+.wpgmza-wrap .wpgmza-editor .map-container-wrap .wpgmza-engine-switch-toolbar .wpgmza-engine-switch-toolbar-inner{
+    display: flex; 
+    align-items: center;
+    gap: 5px;
+    margin-top: 10px;
+}
+
 
 /* Animations */
 @-webkit-keyframes wpgmzaTourPromptWiggle {

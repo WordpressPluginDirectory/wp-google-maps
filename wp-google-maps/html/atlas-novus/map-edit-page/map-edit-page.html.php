@@ -394,7 +394,7 @@
 
 						<div class="item caret-right" data-group="map-heatmaps">
 							<div class="nav-item-icon"><img src="<?php echo WPGMZA_PLUGIN_DIR_URL . "images/heatmap.png"; ?>" alt="<?php esc_attr_e("Heatmaps", "wp-google-maps"); ?>"/></div>
-							<?php _e("Heatmaps", "wp-google-maps"); ?> <span class='wpgmza-upsell-pro-pill' title="<?php echo __("Add more features with our Pro add-on", "wp-google-maps"); ?>"><?php _e("Pro", "wp-google-maps"); ?></span>
+							<?php _e("Heatmaps", "wp-google-maps"); ?> <span class='wpgmza-upsell-pro-pill' title="<?php esc_attr_e("Add more features with our Pro add-on", "wp-google-maps"); ?>"><?php _e("Pro", "wp-google-maps"); ?></span>
 						</div>
 
 						<div class="item caret-right" data-group="map-circles">
@@ -414,13 +414,13 @@
 
 						<div class="item caret-right" data-group="map-image-overlays">
 							<div class="nav-item-icon"><img src="<?php echo WPGMZA_PLUGIN_DIR_URL . "images/image-overlays.png"; ?>" alt="<?php esc_attr_e("Image Overlays", "wp-google-maps"); ?>"/></div>
-							<?php _e("Image Overlays", "wp-google-maps"); ?> <span class='wpgmza-upsell-pro-pill' title="<?php echo __("Add more features with our Pro add-on", "wp-google-maps"); ?>"><?php _e("Pro", "wp-google-maps"); ?></span>
+							<?php _e("Image Overlays", "wp-google-maps"); ?> <span class='wpgmza-upsell-pro-pill' title="<?php esc_attr_e("Add more features with our Pro add-on", "wp-google-maps"); ?>"><?php _e("Pro", "wp-google-maps"); ?></span>
 						</div>
 
 						<div class="item caret-right" data-group="map-shape-library">
 							<span class="dashicons dashicons-category"></span>
 							<?php _e("Shape Library", "wp-google-maps"); ?> 
-							<span class='wpgmza-upsell-pro-pill' title="<?php echo __("Add more features with our Pro add-on", "wp-google-maps"); ?>"><?php _e("Pro", "wp-google-maps"); ?></span>
+							<span class='wpgmza-upsell-pro-pill' title="<?php esc_attr_e("Add more features with our Pro add-on", "wp-google-maps"); ?>"><?php _e("Pro", "wp-google-maps"); ?></span>
 						</div>
 
 						<div class="upsell-block auto-rotate">
@@ -506,7 +506,7 @@
 
 						<div class="item caret-right" data-group="map-settings-directions">
 							<span class="dashicons dashicons-location-alt"></span>
-							<?php _e("Directions", "wp-google-maps"); ?> <span class='wpgmza-upsell-pro-pill' title="<?php echo __("Add more features with our Pro add-on", "wp-google-maps"); ?>"><?php _e("Pro", "wp-google-maps"); ?></span>
+							<?php _e("Directions", "wp-google-maps"); ?> <span class='wpgmza-upsell-pro-pill' title="<?php esc_attr_e("Add more features with our Pro add-on", "wp-google-maps"); ?>"><?php _e("Pro", "wp-google-maps"); ?></span>
 						</div>
 
 						<div class="item caret-right" data-group="map-settings-themes">
@@ -516,22 +516,22 @@
 
 						<div class="item caret-right" data-group="map-settings-info-windows">
 							<span class="dashicons dashicons-admin-comments"></span>
-							<?php _e("Info Windows", "wp-google-maps"); ?> <span class='wpgmza-upsell-pro-pill' title="<?php echo __("Add more features with our Pro add-on", "wp-google-maps"); ?>"><?php _e("Pro", "wp-google-maps"); ?></span>
+							<?php _e("Info Windows", "wp-google-maps"); ?> <span class='wpgmza-upsell-pro-pill' title="<?php esc_attr_e("Add more features with our Pro add-on", "wp-google-maps"); ?>"><?php _e("Pro", "wp-google-maps"); ?></span>
 						</div>
 
 						<div class="item caret-right" data-group="map-settings-marker-listings">
 							<span class="dashicons dashicons-editor-table"></span>
-							<?php _e("Marker Listing", "wp-google-maps"); ?> <span class='wpgmza-upsell-pro-pill' title="<?php echo __("Add more features with our Pro add-on", "wp-google-maps"); ?>"><?php _e("Pro", "wp-google-maps"); ?></span>
+							<?php _e("Marker Listing", "wp-google-maps"); ?> <span class='wpgmza-upsell-pro-pill' title="<?php esc_attr_e("Add more features with our Pro add-on", "wp-google-maps"); ?>"><?php _e("Pro", "wp-google-maps"); ?></span>
 						</div>
 
 						<div class="item caret-right" data-group="map-settings-category-legends">
 							<span class="dashicons dashicons-tag"></span>
-							<?php _e("Legends", "wp-google-maps"); ?> <span class='wpgmza-upsell-pro-pill' title="<?php echo __("Add more features with our Pro add-on", "wp-google-maps"); ?>"><?php _e("Pro", "wp-google-maps"); ?></span>
+							<?php _e("Legends", "wp-google-maps"); ?> <span class='wpgmza-upsell-pro-pill' title="<?php esc_attr_e("Add more features with our Pro add-on", "wp-google-maps"); ?>"><?php _e("Pro", "wp-google-maps"); ?></span>
 						</div>
 
 						<div class="item caret-right" data-group="map-settings-behaviour">
 							<span class="dashicons dashicons-lightbulb"></span>
-							<?php _e("Behaviour", "wp-google-maps"); ?> <span class='wpgmza-upsell-pro-pill' title="<?php echo __("Add more features with our Pro add-on", "wp-google-maps"); ?>"><?php _e("Pro", "wp-google-maps"); ?></span>
+							<?php _e("Behaviour", "wp-google-maps"); ?> <span class='wpgmza-upsell-pro-pill' title="<?php esc_attr_e("Add more features with our Pro add-on", "wp-google-maps"); ?>"><?php _e("Pro", "wp-google-maps"); ?></span>
 						</div>
 
 						<div class="item caret-right" data-group="map-settings-advanced">
@@ -546,7 +546,7 @@
 
 						<div class="item caret-right" data-group="map-settings-integrations">
 							<span class="dashicons dashicons-image-filter"></span>
-							<?php _e("Integrations", "wp-google-maps"); ?> <span class='wpgmza-upsell-pro-pill' title="<?php echo __("Add more features with our Pro add-on", "wp-google-maps"); ?>"><?php _e("Pro", "wp-google-maps"); ?></span>
+							<?php _e("Integrations", "wp-google-maps"); ?> <span class='wpgmza-upsell-pro-pill' title="<?php esc_attr_e("Add more features with our Pro add-on", "wp-google-maps"); ?>"><?php _e("Pro", "wp-google-maps"); ?></span>
 						</div>
 
 						<div class="item hide-pro caret-right" data-group="map-settings-marker-field">
@@ -637,7 +637,7 @@
 								<?php
 								
 								// NB: I recommend adding a unique ID or class to this link and using the DOM to set the href rather than mixing content with logic here. - Perry
-								echo __(sprintf("<a href='%s' target='BLANK'>Click here to automatically create a Map Page now</a>.","admin.php?page=wp-google-maps-menu&amp;action=create-map-page&amp;map_id=". (!empty($_REQUEST['map_id']) ? intval($_REQUEST['map_id']) : '')),"wp-google-maps");
+								echo sprintf(__("<a href='%s' target='BLANK'>Click here to automatically create a Map Page now</a>.", "wp-google-maps"), "admin.php?page=wp-google-maps-menu&amp;action=create-map-page&amp;map_id=". (!empty($_REQUEST['map_id']) ? intval($_REQUEST['map_id']) : ''));
 
 							?>
 						</div>
@@ -743,7 +743,7 @@
 						
 						<div class="item caret-right" data-group="map-settings-store-locator-fields">
 							<span class="dashicons dashicons-editor-ul"></span>
-							<?php _e("Fields", "wp-google-maps"); ?> <span class='wpgmza-upsell-pro-pill' title="<?php echo __("Add more features with our Pro add-on", "wp-google-maps"); ?>"><?php _e("Pro", "wp-google-maps"); ?></span>
+							<?php _e("Fields", "wp-google-maps"); ?> <span class='wpgmza-upsell-pro-pill' title="<?php esc_attr_e("Add more features with our Pro add-on", "wp-google-maps"); ?>"><?php _e("Pro", "wp-google-maps"); ?></span>
 						</div>
 
 						<div class="item caret-right" data-group="map-settings-store-locator-style">
@@ -1051,7 +1051,7 @@
 								<?php
 								_e('View', 'wp-google-maps');
 								?>
-								<a href='https://www.wpgmaps.com/help/docs/store-locator/' target='_BLANK'>
+								<a href='https://www.wpgmaps.com/help/docs/store-locator/?utm_source=plugin&amp;utm_medium=link&amp;utm_campaign=mapedit-store-locator-docs-atlas-novus-v10' target='_BLANK'>
 									<?php
 									_e('Store Locator Documentation', 'wp-google-maps');
 									?>
@@ -1292,7 +1292,7 @@
 								?>
 							</div>
 							<a target="_BLANK" class="wpgmza-upsell-button"
-								href="<?php esc_attr_e(\WPGMZA\Plugin::getProLink("https://www.wpgmaps.com/purchase-professional-version/?utm_source=plugin&amp;utm_medium=link&amp;utm_campaign=directions-btn-atlas-novus-v10" . wpgmzaGetUpsellLinkParams()));  ?>">
+								href="<?php echo esc_attr(\WPGMZA\Plugin::getProLink("https://www.wpgmaps.com/purchase-professional-version/?utm_source=plugin&amp;utm_medium=link&amp;utm_campaign=directions-btn-atlas-novus-v10" . wpgmzaGetUpsellLinkParams()));  ?>">
 								<?php _e('Unlock Directions', 'wp-google-maps'); ?> 
 							</a>
 						</div>
@@ -1580,7 +1580,7 @@
 
 							<div class="hint">
 								<?php
-									echo sprintf(__('Looking for more themes? <a href="%s" target="_BLANK">Browse our theme directory</a>.', 'wp-google-maps'), 'https://www.wpgmaps.com/themes/');
+									echo sprintf(__('Looking for more themes? <a href="%s" target="_BLANK">Browse our theme directory</a>.', 'wp-google-maps'), 'https://www.wpgmaps.com/themes/?utm_source=plugin&amp;utm_medium=link&amp;utm_campaign=mapedit-themes-atlas-novus-v10');
 								?>
 							</div>
 						</div>
@@ -1678,7 +1678,7 @@
 								?>
 							</div>
 							<a target="_BLANK" class="wpgmza-upsell-button"
-								href="<?php esc_attr_e(\WPGMZA\Plugin::getProLink("https://www.wpgmaps.com/purchase-professional-version/?utm_source=plugin&amp;utm_medium=link&amp;utm_campaign=iw-style-btn-atlas-novus-v10" . wpgmzaGetUpsellLinkParams()));  ?>">
+								href="<?php echo esc_attr(\WPGMZA\Plugin::getProLink("https://www.wpgmaps.com/purchase-professional-version/?utm_source=plugin&amp;utm_medium=link&amp;utm_campaign=iw-style-btn-atlas-novus-v10" . wpgmzaGetUpsellLinkParams()));  ?>">
 								<?php _e('Unlock Styles', 'wp-google-maps'); ?> 
 							</a>
 						</div>
@@ -1857,17 +1857,17 @@
 					<div class="navigation">
 						<div class="item caret-right" data-group="map-settings-marker-listings-general">
 							<span class="dashicons dashicons-admin-generic"></span>
-							<?php _e("General", "wp-google-maps"); ?> <span class='wpgmza-upsell-pro-pill' title="<?php echo __("Add more features with our Pro add-on", "wp-google-maps"); ?>"><?php _e("Pro", "wp-google-maps"); ?></span>
+							<?php _e("General", "wp-google-maps"); ?> <span class='wpgmza-upsell-pro-pill' title="<?php esc_attr_e("Add more features with our Pro add-on", "wp-google-maps"); ?>"><?php _e("Pro", "wp-google-maps"); ?></span>
 						</div>
 
 						<div class="item caret-right" data-group="map-settings-marker-listings-filtering">
 							<span class="dashicons dashicons-filter"></span>
-							<?php _e("Filtering", "wp-google-maps"); ?> <span class='wpgmza-upsell-pro-pill' title="<?php echo __("Add more features with our Pro add-on", "wp-google-maps"); ?>"><?php _e("Pro", "wp-google-maps"); ?></span>
+							<?php _e("Filtering", "wp-google-maps"); ?> <span class='wpgmza-upsell-pro-pill' title="<?php esc_attr_e("Add more features with our Pro add-on", "wp-google-maps"); ?>"><?php _e("Pro", "wp-google-maps"); ?></span>
 						</div>
 						
 						<div class="item caret-right" data-group="map-settings-marker-listings-datatables">
 							<span class="dashicons dashicons-editor-table"></span>
-							<?php _e("DataTables", "wp-google-maps"); ?> <span class='wpgmza-upsell-pro-pill' title="<?php echo __("Add more features with our Pro add-on", "wp-google-maps"); ?>"><?php _e("Pro", "wp-google-maps"); ?></span>
+							<?php _e("DataTables", "wp-google-maps"); ?> <span class='wpgmza-upsell-pro-pill' title="<?php esc_attr_e("Add more features with our Pro add-on", "wp-google-maps"); ?>"><?php _e("Pro", "wp-google-maps"); ?></span>
 						</div>
 										
 						<div class="upsell-block auto-rotate">
@@ -1926,7 +1926,7 @@
 								?>
 							</div>
 							<a target="_BLANK" class="wpgmza-upsell-button"
-								href="<?php esc_attr_e(\WPGMZA\Plugin::getProLink("https://www.wpgmaps.com/purchase-professional-version/?utm_source=plugin&amp;utm_medium=link&amp;utm_campaign=marker_listing-btn-atlas-novus-v10" . wpgmzaGetUpsellLinkParams()));  ?>">
+								href="<?php echo esc_attr(\WPGMZA\Plugin::getProLink("https://www.wpgmaps.com/purchase-professional-version/?utm_source=plugin&amp;utm_medium=link&amp;utm_campaign=marker_listing-btn-atlas-novus-v10" . wpgmzaGetUpsellLinkParams()));  ?>">
 								<?php _e('Unlock Marker Listings', 'wp-google-maps'); ?> 
 							</a>
 						</div>
@@ -2043,6 +2043,12 @@
 								
 							</div>
 						</fieldset>
+
+						<p class='wpgmza-shadow wpgmza-card wpgmza-pos-relative' id="marker_listing_require_max_length_warning" style="display: none;">
+							<?php
+								_e("<strong>Important Note</strong><br>For the best results with <strong>Grouped Listings</strong>, please adjust <strong>Maps > Settings > Marker Listing > Show X items by default > To 'ALL'</strong> to prevent pagination from interfering with groupings", "wp-google-maps");
+							?>
+						</p>
 
 						<!-- Placement -->
 						<fieldset class="wpgmza-pro-feature wpgmza-row">
@@ -2180,7 +2186,7 @@
 								?>
 							</div>
 							<a target="_BLANK" class="wpgmza-upsell-button"
-								href="<?php esc_attr_e(\WPGMZA\Plugin::getProLink("https://www.wpgmaps.com/purchase-professional-version/?utm_source=plugin&amp;utm_medium=link&amp;utm_campaign=marker_listing_filters-btn-atlas-novus-v10" . wpgmzaGetUpsellLinkParams()));  ?>">
+								href="<?php echo esc_attr(\WPGMZA\Plugin::getProLink("https://www.wpgmaps.com/purchase-professional-version/?utm_source=plugin&amp;utm_medium=link&amp;utm_campaign=marker_listing_filters-btn-atlas-novus-v10" . wpgmzaGetUpsellLinkParams()));  ?>">
 								<?php _e('Unlock Marker Listings', 'wp-google-maps'); ?> 
 							</a>
 						</div>
@@ -2281,7 +2287,7 @@
 								?>
 							</div>
 							<a target="_BLANK" class="wpgmza-upsell-button"
-								href="<?php esc_attr_e(\WPGMZA\Plugin::getProLink("https://www.wpgmaps.com/purchase-professional-version/?utm_source=plugin&amp;utm_medium=link&amp;utm_campaign=marker_listing-datatables-btn-atlas-novus-v10" . wpgmzaGetUpsellLinkParams()));  ?>">
+								href="<?php echo esc_attr(\WPGMZA\Plugin::getProLink("https://www.wpgmaps.com/purchase-professional-version/?utm_source=plugin&amp;utm_medium=link&amp;utm_campaign=marker_listing-datatables-btn-atlas-novus-v10" . wpgmzaGetUpsellLinkParams()));  ?>">
 								<?php _e('Unlock Marker Listings', 'wp-google-maps'); ?> 
 							</a>
 						</div>
@@ -2458,7 +2464,7 @@
 								?>
 							</div>
 							<a target="_BLANK" class="wpgmza-upsell-button"
-								href="<?php esc_attr_e(\WPGMZA\Plugin::getProLink("https://www.wpgmaps.com/purchase-professional-version/?utm_source=plugin&amp;utm_medium=link&amp;utm_campaign=category-legends-btn-atlas-novus-v10" . wpgmzaGetUpsellLinkParams()));  ?>">
+								href="<?php echo esc_attr(\WPGMZA\Plugin::getProLink("https://www.wpgmaps.com/purchase-professional-version/?utm_source=plugin&amp;utm_medium=link&amp;utm_campaign=category-legends-btn-atlas-novus-v10" . wpgmzaGetUpsellLinkParams()));  ?>">
 								<?php _e('Unlock Category Legends', 'wp-google-maps'); ?> 
 							</a>
 						</div>
@@ -2511,27 +2517,27 @@
 					<div class="navigation">
 						<div class="item caret-right" data-group="map-settings-behaviour-marker">
 							<div class="nav-item-icon"><img src="<?php echo WPGMZA_PLUGIN_DIR_URL . "images/marker-tab-icon.png"; ?>"/></div>
-							<?php _e("Marker", "wp-google-maps"); ?> <span class='wpgmza-upsell-pro-pill' title="<?php echo __("Add more features with our Pro add-on", "wp-google-maps"); ?>"><?php _e("Pro", "wp-google-maps"); ?></span>
+							<?php _e("Marker", "wp-google-maps"); ?> <span class='wpgmza-upsell-pro-pill' title="<?php esc_attr_e("Add more features with our Pro add-on", "wp-google-maps"); ?>"><?php _e("Pro", "wp-google-maps"); ?></span>
 						</div>
 
 						<div class="item caret-right" data-group="map-settings-behaviour-shapes">
 							<div class="nav-item-icon"><img src="<?php echo WPGMZA_PLUGIN_DIR_URL . "images/polygon.png"; ?>"/></div>
-							<?php _e("Shapes", "wp-google-maps"); ?> <span class='wpgmza-upsell-pro-pill' title="<?php echo __("Add more features with our Pro add-on", "wp-google-maps"); ?>"><?php _e("Pro", "wp-google-maps"); ?></span>
+							<?php _e("Shapes", "wp-google-maps"); ?> <span class='wpgmza-upsell-pro-pill' title="<?php esc_attr_e("Add more features with our Pro add-on", "wp-google-maps"); ?>"><?php _e("Pro", "wp-google-maps"); ?></span>
 						</div>
 
 						<div class="item caret-right" data-group="map-settings-behaviour-bounds">
 							<span class="dashicons dashicons-image-crop"></span>
-							<?php _e("Bounds", "wp-google-maps"); ?> <span class='wpgmza-upsell-pro-pill' title="<?php echo __("Add more features with our Pro add-on", "wp-google-maps"); ?>"><?php _e("Pro", "wp-google-maps"); ?></span>
+							<?php _e("Bounds", "wp-google-maps"); ?> <span class='wpgmza-upsell-pro-pill' title="<?php esc_attr_e("Add more features with our Pro add-on", "wp-google-maps"); ?>"><?php _e("Pro", "wp-google-maps"); ?></span>
 						</div>
 
 						<div class="item caret-right" data-group="map-settings-behaviour-user-location">
 							<span class="dashicons dashicons-businessperson"></span>
-							<?php _e("User Location", "wp-google-maps"); ?> <span class='wpgmza-upsell-pro-pill' title="<?php echo __("Add more features with our Pro add-on", "wp-google-maps"); ?>"><?php _e("Pro", "wp-google-maps"); ?></span>
+							<?php _e("User Location", "wp-google-maps"); ?> <span class='wpgmza-upsell-pro-pill' title="<?php esc_attr_e("Add more features with our Pro add-on", "wp-google-maps"); ?>"><?php _e("Pro", "wp-google-maps"); ?></span>
 						</div>
 
 						<div class="item caret-right" data-group="map-settings-behaviour-streetview" data-wpgmza-require-engine="google-maps">
 							<span class="dashicons dashicons-editor-insertmore"></span>
-							<?php _e("Street View", "wp-google-maps"); ?> <span class='wpgmza-upsell-pro-pill' title="<?php echo __("Add more features with our Pro add-on", "wp-google-maps"); ?>"><?php _e("Pro", "wp-google-maps"); ?></span>
+							<?php _e("Street View", "wp-google-maps"); ?> <span class='wpgmza-upsell-pro-pill' title="<?php esc_attr_e("Add more features with our Pro add-on", "wp-google-maps"); ?>"><?php _e("Pro", "wp-google-maps"); ?></span>
 						</div>
 						
 						<div class="upsell-block auto-rotate">
@@ -2590,7 +2596,7 @@
 								?>
 							</div>
 							<a target="_BLANK" class="wpgmza-upsell-button"
-								href="<?php esc_attr_e(\WPGMZA\Plugin::getProLink("https://www.wpgmaps.com/purchase-professional-version/?utm_source=plugin&amp;utm_medium=link&amp;utm_campaign=behaviour-marker-btn-atlas-novus-v10" . wpgmzaGetUpsellLinkParams()));  ?>">
+								href="<?php echo esc_attr(\WPGMZA\Plugin::getProLink("https://www.wpgmaps.com/purchase-professional-version/?utm_source=plugin&amp;utm_medium=link&amp;utm_campaign=behaviour-marker-btn-atlas-novus-v10" . wpgmzaGetUpsellLinkParams()));  ?>">
 								<?php _e('Unlock Behaviour', 'wp-google-maps'); ?> 
 							</a>
 						</div>
@@ -2709,7 +2715,7 @@
 								?>
 							</div>
 							<a target="_BLANK" class="wpgmza-upsell-button"
-								href="<?php esc_attr_e(\WPGMZA\Plugin::getProLink("https://www.wpgmaps.com/purchase-professional-version/?utm_source=plugin&amp;utm_medium=link&amp;utm_campaign=behaviour-polygon-btn-atlas-novus-v10" . wpgmzaGetUpsellLinkParams()));  ?>">
+								href="<?php echo esc_attr(\WPGMZA\Plugin::getProLink("https://www.wpgmaps.com/purchase-professional-version/?utm_source=plugin&amp;utm_medium=link&amp;utm_campaign=behaviour-polygon-btn-atlas-novus-v10" . wpgmzaGetUpsellLinkParams()));  ?>">
 								<?php _e('Unlock Behaviour', 'wp-google-maps'); ?> 
 							</a>
 						</div>
@@ -2792,7 +2798,7 @@
 								?>
 							</div>
 							<a target="_BLANK" class="wpgmza-upsell-button"
-								href="<?php esc_attr_e(\WPGMZA\Plugin::getProLink("https://www.wpgmaps.com/purchase-professional-version/?utm_source=plugin&amp;utm_medium=link&amp;utm_campaign=behaviour-bounds-btn-atlas-novus-v10" . wpgmzaGetUpsellLinkParams()));  ?>">
+								href="<?php echo esc_attr(\WPGMZA\Plugin::getProLink("https://www.wpgmaps.com/purchase-professional-version/?utm_source=plugin&amp;utm_medium=link&amp;utm_campaign=behaviour-bounds-btn-atlas-novus-v10" . wpgmzaGetUpsellLinkParams()));  ?>">
 								<?php _e('Unlock Behaviour', 'wp-google-maps'); ?> 
 							</a>
 						</div>
@@ -2945,7 +2951,7 @@
 								?>
 							</div>
 							<a target="_BLANK" class="wpgmza-upsell-button"
-								href="<?php esc_attr_e(\WPGMZA\Plugin::getProLink("https://www.wpgmaps.com/purchase-professional-version/?utm_source=plugin&amp;utm_medium=link&amp;utm_campaign=behaviour-user-loc-btn-atlas-novus-v10" . wpgmzaGetUpsellLinkParams()));  ?>">
+								href="<?php echo esc_attr(\WPGMZA\Plugin::getProLink("https://www.wpgmaps.com/purchase-professional-version/?utm_source=plugin&amp;utm_medium=link&amp;utm_campaign=behaviour-user-loc-btn-atlas-novus-v10" . wpgmzaGetUpsellLinkParams()));  ?>">
 								<?php _e('Unlock Behaviour', 'wp-google-maps'); ?> 
 							</a>
 						</div>
@@ -3307,6 +3313,23 @@
 							<div class='wpgmza-open-layers-feature-unavailable'></div>
 						</fieldset>
 
+						<!-- Map Scale line Control -->
+						<fieldset class="wpgmza-row">
+							<div class="wpgmza-col">
+								<legend><?php _e("Enable map scale line control", "wp-google-maps"); ?></legend>
+							</div>
+
+							<div class="wpgmza-col">
+								<div class='switch'>
+									<input type='checkbox'
+										id='wpgmza_enable_scale_control' 
+										name='enable_scale_control' 
+										class='postform cmn-toggle cmn-toggle-round-flat'/>
+									<label for="wpgmza_enable_scale_control"></label>
+								</div>
+							</div>
+						</fieldset>
+
 						<!-- Disable lightbox -->
 						<fieldset class="wpgmza-pro-feature wpgmza-row">
 							<div class="wpgmza-col">
@@ -3374,6 +3397,7 @@
 								</div>
 							</div>
 						</fieldset>
+
 
 						<!-- KML -->
 						<fieldset class="wpgmza-pro-feature">
@@ -3507,7 +3531,7 @@
 								?>
 							</div>
 							<a target="_BLANK" class="wpgmza-upsell-button"
-								href="<?php esc_attr_e(\WPGMZA\Plugin::getProLink("https://www.wpgmaps.com/purchase-professional-version/?utm_source=plugin&amp;utm_medium=link&amp;utm_campaign=integrations-btn-atlas-novus-v10" . wpgmzaGetUpsellLinkParams()));  ?>">
+								href="<?php echo esc_attr(\WPGMZA\Plugin::getProLink("https://www.wpgmaps.com/purchase-professional-version/?utm_source=plugin&amp;utm_medium=link&amp;utm_campaign=integrations-btn-atlas-novus-v10" . wpgmzaGetUpsellLinkParams()));  ?>">
 								<?php _e('Unlock Integrations', 'wp-google-maps'); ?> 
 							</a>
 						</div>
@@ -3767,6 +3791,29 @@
 							<div class="hint"><?php _e("Note: Shortcode must be placed on a page with a map present", "wp-google-maps"); ?></div>
 						</div>
 
+						<!-- Marker Field Filter Shortcode -->
+						<fieldset class="wpgmza-row align-center wpgmza-pro-feature">
+							<div class="wpgmza-col">
+								<?php _e("Marker Field Filter", "wp-google-maps"); ?>
+							</div>
+
+							<div class="wpgmza-col wpgmza-text-align-right">
+								<button class="wpgmza-button wpgmza-shortcode-button">[wpgmza_marker_field_filter id="<span></span>"]</button>
+							</div>
+						</fieldset>
+
+						<!-- Marker Field Filter Shortcode Desc -->
+						<div class="wpgmza-shortcode-description wpgmza-card wpgmza-shadow wpgmza-margin-t-10 wpgmza-hidden wpgmza-pro-feature-hide">
+							<span><?php _e("Attributes", "wp-google-maps"); ?></span>
+							<ul>
+								<!-- Pro Features -->
+								<li class="wpgmza-pro-feature-hide"><strong>id</strong> <em><?php _e("The ID of the map you are loading (number)", "wp-google-maps"); ?></em></li>
+								<li class="wpgmza-pro-feature-hide"><strong>field_ids</strong> <em><?php _e("Comma-separated list of custom field IDs to display (numbers). Ignore to show all filters.", "wp-google-maps"); ?></em></li>
+							</ul>
+
+							<div class="hint"><?php _e("Note: Shortcode must be placed on a page with a map present", "wp-google-maps"); ?></div>
+						</div>
+
 						<!-- Upsell -->
 						<div class="wpgmza-upsell wpgmza-upsell-featured wpgmza-card wpgmza-shadow">
 							<div class="wpgmza-upsell-heading"><?php _e("Unlock More Shortcodes", "wp-google-maps"); ?></div>
@@ -3782,7 +3829,7 @@
 								?>
 							</div>
 							<a target="_BLANK" class="wpgmza-upsell-button"
-								href="<?php esc_attr_e(\WPGMZA\Plugin::getProLink("https://www.wpgmaps.com/purchase-professional-version/?utm_source=plugin&amp;utm_medium=link&amp;utm_campaign=shortcodes-btn-atlas-novus-v10" . wpgmzaGetUpsellLinkParams()));  ?>">
+								href="<?php echo esc_attr(\WPGMZA\Plugin::getProLink("https://www.wpgmaps.com/purchase-professional-version/?utm_source=plugin&amp;utm_medium=link&amp;utm_campaign=shortcodes-btn-atlas-novus-v10" . wpgmzaGetUpsellLinkParams()));  ?>">
 								<?php _e('Unlock Shortcodes', 'wp-google-maps'); ?> 
 							</a>
 						</div>
@@ -3895,7 +3942,7 @@
 						</div>
 						
 						<div class="wpgmza-text-align-center">	
-							<a href="https://www.wpgmaps.com/demo/" class="wpgmza-button" target="_BLANK"><?php esc_html_e('View the demos', 'wp-google-maps'); ?></a>
+							<a href="https://www.wpgmaps.com/demo/?utm_source=plugin&amp;utm_medium=link&amp;utm_campaign=mapedit-demo-view-atlas-novus-v10" class="wpgmza-button" target="_BLANK"><?php esc_html_e('View the demos', 'wp-google-maps'); ?></a>
 						</div>
 						
 						<br>
@@ -3905,12 +3952,12 @@
 							?>
 							<br>
 							<?php 
-								_e("Contact Nick on <a href=\"mailto:nick@wpgmaps.com\">nick@wpgmaps.com</a> or use our <a href=\"https://www.wpgmaps.com/contact-us/\" target=\"_BLANK\">contact form</a>.", "wp-google-maps");
+								_e("Contact Nick on <a href=\"mailto:nick@wpgmaps.com\">nick@wpgmaps.com</a> or use our <a href=\"https://www.wpgmaps.com/contact-us/?utm_source=plugin&amp;utm_medium=link&amp;utm_campaign=mapedit-contactus-atlas-novus-v10\" target=\"_BLANK\">contact form</a>.", "wp-google-maps");
 							?>
 						</div>
 						
 						<br>
-						<div class="wpgmza-text-align-center"><?php _e("Need help? <a href=\"https://www.wpgmaps.com/forums/\" target=\"_BLANK\">Ask a question on our support forum</a>.", "wp-google-maps"); ?> </div>
+						<div class="wpgmza-text-align-center"><?php _e("Need help? <a href=\"https://www.wpgmaps.com/forums/?utm_source=plugin&amp;utm_medium=link&amp;utm_campaign=mapedit-forums-atlas-novus-v10\" target=\"_BLANK\">Ask a question on our support forum</a>.", "wp-google-maps"); ?> </div>
 					</div>
 				</div>
 			</form>
@@ -3961,7 +4008,7 @@
 								?>
 							</div>
 							<a target="_BLANK" class="wpgmza-upsell-button"
-								href="<?php esc_attr_e(\WPGMZA\Plugin::getProLink("https://www.wpgmaps.com/purchase-professional-version/?utm_source=plugin&amp;utm_medium=link&amp;utm_campaign=advanced_markers-btn-atlas-novus-v10" . wpgmzaGetUpsellLinkParams()));  ?>">
+								href="<?php echo esc_attr(\WPGMZA\Plugin::getProLink("https://www.wpgmaps.com/purchase-professional-version/?utm_source=plugin&amp;utm_medium=link&amp;utm_campaign=advanced_markers-btn-atlas-novus-v10" . wpgmzaGetUpsellLinkParams()));  ?>">
 								<?php _e('Unlock Advanced Markers', 'wp-google-maps'); ?> 
 							</a>
 						</div>
@@ -4337,7 +4384,7 @@
 							?>
 						</div>
 						<a target="_BLANK" class="wpgmza-upsell-button"
-							href="<?php esc_attr_e(\WPGMZA\Plugin::getProLink("https://www.wpgmaps.com/purchase-professional-version/?utm_source=plugin&amp;utm_medium=link&amp;utm_campaign=shape-library-btn-atlas-novus-v10" . wpgmzaGetUpsellLinkParams()));  ?>">
+							href="<?php echo esc_attr(\WPGMZA\Plugin::getProLink("https://www.wpgmaps.com/purchase-professional-version/?utm_source=plugin&amp;utm_medium=link&amp;utm_campaign=shape-library-btn-atlas-novus-v10" . wpgmzaGetUpsellLinkParams()));  ?>">
 							<?php _e('Unlock Shape Library', 'wp-google-maps'); ?> 
 						</a>
 					</div>
@@ -4364,7 +4411,7 @@
 
 						<ul>
 							<li>
-								<a href="https://www.wpgmaps.com/help/"
+								<a href="https://www.wpgmaps.com/help/?utm_source=plugin&amp;utm_medium=link&amp;utm_campaign=mapedit-docs-atlas-novus-v10"
 									title="<?php esc_attr_e('WP Go Maps Documentation Section', 'wp-google-maps'); ?>"
 									target="_BLANK">
 										<?php _e("Documentation", "wp-google-maps"); ?>
@@ -4372,7 +4419,7 @@
 							</li>
 							
 							<li>
-								<a href="https://www.wpgmaps.com/help/docs-category/troubleshooting/"
+								<a href="https://www.wpgmaps.com/help/docs-category/troubleshooting/?utm_source=plugin&amp;utm_medium=link&amp;utm_campaign=mapedit-docs-troubleshooting-atlas-novus-v10"
 									title="<?php esc_attr_e('WP Go Maps Troubleshooting Section', 'wp-google-maps'); ?>"
 									target="_BLANK">
 										<?php _e("Troubleshooting", "wp-google-maps"); ?>
@@ -4380,7 +4427,7 @@
 							</li>
 
 							<li>
-								<a href="https://www.wpgmaps.com/forums/forum/"
+								<a href="https://www.wpgmaps.com/forums/forum/?utm_source=plugin&amp;utm_medium=link&amp;utm_campaign=mapedit-forums-atlas-novus-v10"
 									title="<?php esc_attr_e('WP Go Maps Community Forums', 'wp-google-maps'); ?>"
 									target="_BLANK">
 										<?php _e("Community forums", "wp-google-maps"); ?>
@@ -4404,7 +4451,7 @@
 							</li>
 
 							<li>
-								<a href="https://www.wpgmaps.com/contact-us/"
+								<a href="https://www.wpgmaps.com/contact-us/?utm_source=plugin&amp;utm_medium=link&amp;utm_campaign=mapedit-contactus-atlas-novus-v10"
 									title="<?php esc_attr_e('WP Go Maps Get in touch', 'wp-google-maps'); ?>"
 									target="_BLANK">
 										<?php _e("Get in touch", "wp-google-maps"); ?>
@@ -4412,7 +4459,7 @@
 							</li>
 
 							<li>
-								<a href="https://www.wpgmaps.com/privacy-policy"
+								<a href="https://www.wpgmaps.com/privacy-policy?utm_source=plugin&amp;utm_medium=link&amp;utm_campaign=mapedit-privacy-atlas-novus-v10"
 									title="<?php esc_attr_e('WP Go Maps Privacy Policy', 'wp-google-maps'); ?>"
 									target="_BLANK">
 										<?php _e("Privacy policy", "wp-google-maps"); ?>
@@ -4430,7 +4477,7 @@
 
 						<div class="info-content">
 							<?php
-								_e("Thank you for using <a href='https://www.wpgmaps.com'>WP Go Maps</a>!", 'wp-google-maps');
+								_e("Thank you for using <a href='https://www.wpgmaps.com?utm_source=plugin&amp;utm_medium=link&amp;utm_campaign=mapedit-thankyou-use-atlas-novus-v10'>WP Go Maps</a>!", 'wp-google-maps');
 							?>
 						</div>
 					</div>
@@ -4459,7 +4506,7 @@
 			<div class="action-bar" data-type="map">
 				<div class="wpgmza-row">
 					<div class="wpgmza-col">
-						<label for="shortcode_input" class="wpgmza-button">Get Shortcode</label>
+						<label for="shortcode_input" class="wpgmza-button"><?php esc_html_e('Get Shortcode', 'wp-google-maps'); ?></label>
 					</div>
 					<div class="wpgmza-col wpgmza-text-align-right">
 						<label class="wpgmza-button wpgmza-button-accent dynamic-action wpgmza-hidden"></label>
@@ -4544,7 +4591,25 @@
 				<div class="wpgmza-one-time-hint" data-hint-delay="5" data-hint-tag='quickCreateMarkers'>
 					<span><?php _e("Click here to add markers", "wp-google-maps"); ?></span>
 				</div>
-				
+
+				<div class="wpgmza-engine-switch-toolbar wpgmza-hidden wpgmza-card wpgmza-shadow">
+					<div><?php _e('Would you like to try a different map engine?', 'wp-google-maps'); ?></div>
+					<div class="wpgmza-engine-switch-toolbar-inner">
+						<select data-engine-switch-control="engine">
+							<option value="google-maps"><?php _e('Google Maps', 'wp-google-maps'); ?></option>
+							<option value="leaflet-azure"><?php _e('Microsoft Azure (Formerly Bing)', 'wp-google-maps'); ?></option>
+							<option value="leaflet-stadia"><?php _e('Stadia Maps', 'wp-google-maps'); ?></option>
+							<option value="leaflet-maptiler"><?php _e('Maptiler', 'wp-google-maps'); ?></option>
+							<option value="leaflet-locationiq"><?php _e('LocationIQ', 'wp-google-maps'); ?></option>
+							<option value="leaflet-zerocost"><?php _e('Zero Cost Mapping', 'wp-google-maps'); ?></option>
+							<option value="leaflet"><?php _e('Leaflet', 'wp-google-maps'); ?></option>
+							<option value="open-layers-latest"><?php _e('OpenLayers', 'wp-google-maps'); ?></option>
+						</select>
+
+						<div class="wpgmza-button wpgmza-button-primary" data-engine-switch-control="apply"><?php _e("Apply", "wp-google-maps"); ?></div>
+						<div class="wpgmza-button" data-engine-switch-control="dismiss"><?php _e("Dismiss", "wp-google-maps"); ?></div>
+					</div>
+				</div>
 			</div>
 
 			<!-- Context Menu -->

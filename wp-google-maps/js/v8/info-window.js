@@ -118,9 +118,19 @@ jQuery(function($) {
 	WPGMZA.InfoWindow.prototype.addEditButton = function() {
 		if (WPGMZA.currentPage == "map-edit") {
 			if(this.feature instanceof WPGMZA.Marker){
-				let buttons = '<a title="Edit this marker" style="width:15px;" class="wpgmza_edit_btn" data-edit-marker-id="'+this.feature.id+'"><i class="fa fa-edit"></i></a>';
+				/* Both the title attribute (tooltip) and the visible label
+				   come from WPGMZA.localized_strings so they honour the
+				   active site locale. The visible label used to come from
+				   a CSS `::after { content: "Edit" }` pseudo-element in
+				   atlas-major.css, which made it impossible to translate —
+				   now it's a real DOM <span> with proper text content.
+				   Fallback strings let the buttons render in English if
+				   the localized_strings payload hasn't loaded yet. */
+				var editTitle = (WPGMZA.localized_strings && WPGMZA.localized_strings.info_window_edit_marker_title) || 'Edit this marker';
+				var editLabel = (WPGMZA.localized_strings && WPGMZA.localized_strings.info_window_edit_marker_label) || 'Edit';
+				let buttons = '<a title="' + editTitle + '" class="wpgmza_edit_btn" data-edit-marker-id="'+this.feature.id+'"><i class="fa fa-edit"></i><span class="wpgmza-btn-label">' + editLabel + '</span></a>';
 				buttons += this.addDeleteButton();
-				return ' ' + buttons;	
+				return ' ' + buttons;
 			}
 		}
 		return '';
@@ -129,7 +139,9 @@ jQuery(function($) {
 	WPGMZA.InfoWindow.prototype.addDeleteButton = function(){
 		if (WPGMZA.currentPage == "map-edit") {
 			if(this.feature instanceof WPGMZA.Marker){
-				return' <a title="Delete this marker" style="width:15px;" class="wpgmza_del_btn" data-delete-marker-id="'+this.feature.id+'"><i class="fa fa-trash"></i></a>';
+				var deleteTitle = (WPGMZA.localized_strings && WPGMZA.localized_strings.info_window_delete_marker_title) || 'Delete this marker';
+				var deleteLabel = (WPGMZA.localized_strings && WPGMZA.localized_strings.info_window_delete_marker_label) || 'Delete';
+				return' <a title="' + deleteTitle + '" class="wpgmza_del_btn" data-delete-marker-id="'+this.feature.id+'"><i class="fa fa-trash"></i><span class="wpgmza-btn-label">' + deleteLabel + '</span></a>';
 			}
 		}
 		return '';
@@ -138,15 +150,32 @@ jQuery(function($) {
 	WPGMZA.InfoWindow.prototype.workOutDistanceBetweenTwoMarkers = function(location1, location2) {
 		if(!location1 || !location2)
 			return; // No location (no search performed, user location unavailable)
-		
+
 		var distanceInKM = WPGMZA.Distance.between(location1, location2);
 		var distanceToDisplay = distanceInKM;
-			
-		if(this.distanceUnits == WPGMZA.Distance.MILES)
+
+		/* Resolve the distance unit. InfoWindow doesn't set its own
+		 * `distanceUnits` — that property only exists on StoreLocator
+		 * (store-locator.js:20). Previously this check compared
+		 * `undefined == WPGMZA.Distance.MILES` which is always false,
+		 * so the displayed value was ALWAYS in KM even when the user
+		 * had Miles selected ("33 miles" meant 33km). Read from
+		 * `map.settings.store_locator_distance` instead — the same
+		 * source getContent uses for the unit-label string ("km
+		 * away" vs "miles away") — so both the numeric value and the
+		 * label stay consistent. */
+		var useMiles = false;
+		if(this.feature && this.feature.map && this.feature.map.settings){
+			useMiles = this.feature.map.settings.store_locator_distance == WPGMZA.Distance.MILES
+				|| this.feature.map.settings.store_locator_distance == 1
+				|| this.feature.map.settings.store_locator_distance == '1';
+		}
+
+		if(useMiles)
 			distanceToDisplay /= WPGMZA.Distance.KILOMETERS_PER_MILE;
-		
+
 		var text = Math.round(distanceToDisplay, 2);
-		
+
 		return text;
 	}
 

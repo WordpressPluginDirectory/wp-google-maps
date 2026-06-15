@@ -22,10 +22,13 @@ jQuery(function($) {
 			$.fn.dataTable.ext.errMode = "throw";
 		} else {
 			var version = $.fn.dataTable.version ? $.fn.dataTable.version : "unknown";
-			console.warn("You appear to be running an outdated or modified version of the dataTables library. This may cause issues with table functionality. This is usually caused by 3rd party software loading an older version of DataTables. The loaded version is " + version + ", we recommend version 1.10.12 or above.");
+			console.warn("You appear to be running an outdated or modified version of the dataTables library. This may cause issues with table functionality. This is usually caused by 3rd party software loading an older version of DataTables. The loaded version is " + version + ", we recommend version 2.0 or above.");
 		}
 
-		if($.fn.dataTable.Api){
+		// In DataTables 2.x processing() is a built-in API method; only register the
+		// 1.x shim (which relies on the private oApi._fnProcessingDisplay) when running
+		// on an older version.
+		if($.fn.dataTable.Api && $.fn.dataTable.versionCheck && !$.fn.dataTable.versionCheck('2.0.0')){
 			$.fn.dataTable.Api.register( 'processing()', function ( show ) {
 				return this.iterator( 'table', function ( ctx ) {
 					ctx.oApi._fnProcessingDisplay( ctx, show );
@@ -52,15 +55,32 @@ jQuery(function($) {
 			this.dataTable.ajax.reload();
 		}
 		else {
-			
-			$.ajax(this.getLanguageURL(), {
+			const primaryURL = this.getLanguageURL();
+			const filename = primaryURL.split('/').pop();
+			const swappedFirst = filename.charAt(0) === filename.charAt(0).toUpperCase() ? filename.charAt(0).toLowerCase() : filename.charAt(0).toUpperCase();
+			const fallbackURL = primaryURL.slice(0, primaryURL.lastIndexOf('/') + 1) + swappedFirst + filename.slice(1);
 
+			$.ajax(primaryURL, {
 				success: function(response, status, xhr){
 					self.languageJSON = response;
 					self.dataTable = $(self.dataTableElement).DataTable(settings);
 					self.dataTable.ajax.reload();
+				},
+				error: function(){
+					$.ajax(fallbackURL, {
+						success: function(response, status, xhr){
+							self.languageJSON = response;
+							settings.language = { url: fallbackURL };
+							self.dataTable = $(self.dataTableElement).DataTable(settings);
+							self.dataTable.ajax.reload();
+						},
+						error: function(){
+							delete settings.language;
+							self.dataTable = $(self.dataTableElement).DataTable(settings);
+							self.dataTable.ajax.reload();
+						}
+					});
 				}
-				
 			});
 		}
 	}
@@ -162,14 +182,14 @@ jQuery(function($) {
 		}
 		
 		if(WPGMZA.AdvancedTableDataTable && this instanceof WPGMZA.AdvancedTableDataTable && WPGMZA.settings.wpgmza_default_items){
-			options.iDisplayLength = parseInt(WPGMZA.settings.wpgmza_default_items);
+			options.pageLength = parseInt(WPGMZA.settings.wpgmza_default_items);
 		}
 
 		if(WPGMZA.settings && WPGMZA.settings.enable_datatables_enter_search){
 			options.search = { return : true };
 		}
 		
-		options.aLengthMenu = [[5, 10, 25, 50, 100, -1], ["5", "10", "25", "50", "100", WPGMZA.localized_strings.all]];
+		options.lengthMenu = [[5, 10, 25, 50, 100, -1], ["5", "10", "25", "50", "100", WPGMZA.localized_strings.all]];
 		
 		var languageURL = this.getLanguageURL();
 		if(languageURL)

@@ -1,28 +1,31 @@
-=== WP Go Maps (formerly WP Google Maps) ===
+=== WP Go Maps - Google Maps, OpenStreetMap, Leaflet Map ===
 Contributors: WPGMaps, NickDuncan, CodeCabin_, DylanAuty
 Donate link: https://www.wpgmaps.com
-Tags: google maps, maps, map, map markers, block, map block, google map, google maps plugin, wp google maps, wp google map, map plugin, store locator, google map plugin, map widget, open layers, elementor map
-Requires at least: 3.5
-Tested up to: 6.8
+Tags: google maps, maps, map, leaflet, store locator
+Requires at least: 6.0
+Tested up to: 7.0
 Requires PHP: 7.0
-Stable tag: 10.0.02
+Stable tag: 10.1.02
 License: GPLv2
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-The easiest to use Google maps plugin! Create a custom Google map, map block, store locator or map widget with high quality markers containing categories, descriptions, images and links.
+The easiest to use map plugin! Create a custom map, map block, store locator or map widget with high quality markers.
 
 == Description ==
 
 The easiest to use Google Maps, Leaflet and Open Layers Map Plugin (including a Map Block)!
 
+Formerly WP Google Maps.
+
 Add a customized Google map, map block or Store Locator to your WordPress posts and/or pages quickly and easily with the supplied shortcode. No fuss. No iFrames and super easy to use! Perfect for contact page maps, routes, maps showing delivery areas and any other use you can think of!
 
-While the free version of WP Go Maps allows you to create a Google map with as many markers as you like, the Pro version allows you to do so much more! 
+While the free version of WP Go Maps allows you to create a Google map with as many markers as you like, the Pro version allows you to do so much more!
 
 Create Elementor Maps, map blocks and map widgets easily with our WP Go Maps Elementor map block integration, straight out the box!
 
-Do you use the classic editor? We still support map widgets for classic WordPress installations. No need to compromise, the map widget includes the same functionality as our map blocks! 
+Do you use the classic editor? We still support map widgets for classic WordPress installations. No need to compromise, the map widget includes the same functionality as our map blocks!
 
-The [WP Go Maps Pro Version](https://www.wpgmaps.com/purchase-professional-version/) version allows you create custom Google maps with high quality markers containing locations, descriptions, images, categories, links and directions. 
+The [WP Go Maps Pro Version](https://www.wpgmaps.com/purchase-professional-version/) version allows you create custom Google maps with high quality markers containing locations, descriptions, images, categories, links and directions.
 
 = Lite Version (Free) =
 * The most popular Google Maps plugin on WordPress
@@ -214,145 +217,140 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 
 == Upgrade Notice ==
 
-= 10.0.01 =
-Please update to 10.0.01 or above to ensure you are using the latest architecture, and latest features.
+= 10.1.02 =
+Please update to 10.1.02 or above to ensure you are using the latest security enhancements.
 
-= 10.0.00 =
-Please update to 10.0.00 or above to ensure you are using the latest architecture, and latest features.
+= 10.1.00 =
+Please update to 10.1.00 or above to ensure you are using the latest security enhancements.
 
-= 9.0.49 =
-Please update to 9.0.49 or above or above to ensure you are using the latest security enhancements.
+= 10.0.10 =
+Please update to 10.0.10 or above to ensure you are using the latest security enhancements.
 
-= 9.0.48 =
-Please update to 9.0.48 or above or above to ensure you are using the latest security enhancements.
+= 10.0.08 =
+Please update to 10.0.08 or above for the latest stability improvements.
 
-= 9.0.47 =
-Please update to 9.0.47 or above or above to ensure you are using the latest security enhancements.
-
-= 9.0.46 =
-Please update to 9.0.46 or above for the latest stability improvements.
-
-= 9.0.45 =
-Please update to 9.0.45 or above for the latest stability improvements.
-
-= 9.0.43 =
-Please update to 9.0.43 or above for the latest stability improvements.
-
-= 9.0.41 =
-Please update to 9.0.41 or above or above to ensure you are using the latest security enhancements.
-
-= 9.0.40 =
-Please update to 9.0.40 or above for the latest stability improvements.
-
-= 9.0.39 =
-Please update to 9.0.39 or above or above to ensure you are using the latest security enhancements.
-
-= 9.0.37 =
-Please update to 9.0.37 or above or above to ensure you are using the latest security enhancements.
-
-= 9.0.36 =
-Please update to 9.0.36 or above or above to ensure you are using the latest security enhancements.
-
-= 9.0.34 =
-Please update to 9.0.34 or above or above to ensure you are using the latest security enhancements.
-
-= 9.0.33 =
-Please update to 9.0.33 or above or above to ensure you are using the latest security enhancements.
-
-= 9.0.32 =
-Please update to 9.0.32 or above or above to ensure you are using the latest security enhancements.
-
-= 9.0.31 =
-Please update to 9.0.31 or above or above to ensure you are using the latest security enhancements.
-
-= 9.0.30 =
-Please update to 9.0.30 or above or above to ensure you are using the latest security enhancements.
-
-= 9.0.28 =
-Please update to 9.0.28 or above or above to ensure you are using the latest security enhancements.
-
-= 9.0.27 =
-Please update to 9.0.27 or above for the latest stability improvements and PHP compatibility
-
-= 9.0.26 =
-Please update to 9.0.26 or above for the latest stability improvements.
-
-= 9.0.25 =
-Please update to 9.0.25 or above for the latest stability improvements.
-
-= 9.0.23 =
-Please update to 9.0.23 or above to ensure you are using the latest architecture, and latest features.
-
-= 9.0.22 =
-Please update to 9.0.22 or above for the latest stability improvements.
-
-= 9.0.21 =
-Please update to 9.0.21 or above to ensure you are using the latest architecture, and latest features.
-
-= 9.0.20 =
-Please update to 9.0.20 or above for the latest stability improvements.
-
-= 9.0.19 =
-Please update to 9.0.19 or above for the latest stability improvements.
-
-= 9.0.18 =
-Please update to 9.0.18 or above for the latest stability improvements.
-
-= 9.0.17 =
-Please update to 9.0.17 or above for the latest stability improvements.
-
-= 9.0.16 =
-Please update to 9.0.16 or above for the latest stability improvements.
-
-= 9.0.15 =
-Please update to 9.0.15 or above to ensure you are using the latest security enhancements.
-
-= 9.0.14 =
-Please update to 9.0.14 or above for the latest stability improvements.
-
-= 9.0.13 =
-Please update to 9.0.13 or above for the latest stability improvements.
-
-= 9.0.4 =
-Please update to 9.0.4 or above for the latest stability improvements.
-
-= 9.0.3 =
-Please update to 9.0.3 or above for the latest stability improvements.
-
-= 9.0.1 =
-Please update to 9.0.1 or above for the latest stability improvements.
-
-= 9.0.0 =
-Please update to 9.0.0 or above to ensure you are using the latest architecture, and latest features.
-
-= 8.1.20 =
-Please update to 8.1.20 or above to ensure you are using the latest security enhancements.
-
-= 8.1.18 =
-Please update to 8.1.18 or above to ensure you are using the latest security enhancements.
-
-= 8.1.16 =
-Please update to 8.1.16 or above to ensure plugin stability.
-
-= 8.1.13 =
-Please update to 8.1.13 or above to ensure you are using the latest security enhancements.
-
-= 8.1.12 =
-Please update to 8.1.12 for PHP8 compatibility.
-
-= 8.1.4 =
-Please update to 8.1.4 to ensure a smooth user experience.
-
-= 8.0.26 =
-Please update to 8.0.26 or above to ensure you are using the latest security enhancements.
-
-= 7.11.19 =
-Please update to 7.11.18 or above to ensure you are using the latest security enhancements.
-
-= 6.3.15 =
-Please update your WP Go Maps version to 6.3.15 to ensure you are using the latest security enhancements.
+= 10.0.07 =
+Please update to 10.0.07 or above to ensure you are using the latest architecture, and latest features.
 
 == Changelog ==
+
+= 10.1.02 - 2026-06-15 =
+* Fixed issue where unauthenticated requests could trigger unintended database writes via the DataTables REST endpoint. Security issue, thanks to Thanh Diem (Wordfence)
+* Fixed issue where Datatables language files may not load correctly in some environments due to name case. Fallback system developed to resolve and fail gracefully if unavailable
+
+= 10.1.01 - 2026-06-10 =
+* Added a canonical POT translation template (languages/wp-google-maps.pot) so translators and contributors can generate and maintain language files from a single source rather than reconstructing the template locally each pass
+* Added a fully complete French (fr_FR) translation, refreshed against the 10.1.00 codebase including all Atlas Major UI strings.
+* Added a fully complete German (de_DE) translation, refreshed against the 10.1.00 codebase including all Atlas Major UI strings.
+* Added a fully complete Italian (it_IT) translation, refreshed against the 10.1.00 codebase including all Atlas Major UI strings.
+* Added a fully complete Spanish (es_ES) translation, refreshed against the 10.1.00 codebase including all Atlas Major UI strings.
+* Added a fully complete Polish (pl_PL) translation, refreshed against the 10.1.00 codebase including all Atlas Major UI strings.
+* Improved responsiveness of the map editor at narrow viewports (Atlas Major).
+* Fixed issue where Leaflet frontend maps could place markers at incorrect pixel positions when the page layout had not finished settling at map construction time. An invalidateSize() call after first paint forces the origin to be recalculated against the correct container dimensions
+
+= 10.1.00 - 2026-06-03 =
+* Added Atlas Major, a new editor UI.
+* Added live preview to the map editor, showing how the page will render with real-time updates as settings change (Atlas Major)
+* Added automatic background save via REST. Form changes are persisted shortly after a change with a "Saved" indicator, falling back to a native form submit after 3 seconds if the REST request fails (Atlas Major)
+* Added live tileset swap, applying a tileset to the editor map immediately on selection without needing to save (Atlas Major)
+* Added click-drag isolation on info-window panels, directions boxes, and inner-stack overlays so panel interactions no longer drag the map underneath (Atlas Major)
+* Added "Save & Reload" confirmation modal for settings that require a fresh map construction, with an in-progress overlay during the reload (Atlas Major)
+* Added auto-scroll to top and address field focus after a successful Add Marker (Atlas Major)
+* Added auto-close of info window panel after delete, and auto-refresh of info window content after a marker save (Atlas Major)
+* Added store locator text override preservation across editor rebuilds (Atlas Major)
+* Added 🔑 indicator next to engines in the engine switch dropdown that require an API key
+* Added missing API key notice for Microsoft Azure, Stadia Maps, Maptiler, and LocationIQ. Previously only Google Maps would surface this notice
+* Added auto-return to the feature list panel after a successful Add Marker or Add shape
+* Fixed issue where saving the map in basic would write empty strings into Pro-only store locator visual fields, leading to invisible store locator circles after Pro was activated
+* Fixed issue where info-window distance calculation read the wrong unit source, causing "miles away" labels to render kilometre values
+* Fixed issue where the map list page displayed poorly on small screens due to DataTables 2 colgroup widths
+* Fixed issue where the map editor REST autosave returned a 500 error under Pro because an admin-only file include was not available in the REST request context
+* Fixed issue where the Plugin class __isset method was missing magic-getter cases, causing several live preview Pro template injections to silently fail (Atlas Major)
+* Fixed issue where the custom image overlay live preview could corrupt the map start coordinates because the Leaflet CRS is locked at map construction (Atlas Major)
+* Fixed issue where unchecked checkboxes were treated as enabled in live preview (Atlas Major)
+* Fixed issue where the action bar Save Map and Preview buttons would wrap to separate rows on narrow sidebars (Atlas Major)
+* Fixed issue where the bulk markers REST endpoint would return unapproved markers to unauthenticated users. Security issue, thanks to Fraudless.tech (Ilyess Ghalem)
+* Improved default map height for new maps from 400px to 600px
+* Improved Save Map button feedback to pulse red with a spinner during autosave and manual saves (Atlas Major)
+* Improved engine switching from the editor toolbar to reload the editor so the new engine libraries load correctly
+* Improved missing API key notice to render as a centered card over the map area
+* Improved store locator radius circle cleanup when components rebuild in live preview (Atlas Major)
+* Improved editor diagnostics by removing verbose console output on page load and save (Atlas Major)
+* Improved internationalisation by auditing UI strings and migrating hardcoded text to WPGMZA.localized_strings (Atlas Major)
+* Improved cursor handling across editor panels and info-window overlays so Leaflet's grab cursor no longer leaks into UI surfaces (Atlas Major)
+
+= 10.0.10 - 2026-05-13 =
+* Fixed issue where Datatables AJAX fallback would bypass the approval filter. Security issue, thanks to WPScan, Jetpack, Automattic (Erwan)
+* Fixed issue where single marker endpoint and AJAX fallback would bypass the approval filter. Security issue, thanks to WPScan, Jetpack, Automattic (Erwan)
+* Fixed issue where Pro users below V10.0.06 would experience issues with admin marker tables, which do not have access to V2 library methods
+* Fixed issue where Pro users below V10.0.06 would experience issues Google Drawing Manager, which is being deprecated in favor of an internal module
+* Fixed issue where WPML users would experience failure in the settings area when running legacy UI
+
+= 10.0.09 - 2026-04-16 =
+* Fixed issue where minified code base was not accurately compiled due to issue with internal build tools. Only affected pro users
+
+= 10.0.08 - 2026-04-16 =
+* Fixed issue where users on Pro below V10 would experience a DataTables V2 init failure, preventing access to the map editor and marker list. When Pro below V10 is detected, DataTables V1.12 and its Responsive extension are now loaded from CDN instead
+* Fixed issue where users on Pro below V10 would see an init failure on the map editor due to the Google Drawing Manager library not being loaded. The drawing library is now injected into the Google Maps API URL via the compatibility layer when Pro below V10 is detected on the map edit page
+
+= 10.0.07 - 2026-04-15 =
+* Added methods to internal Google Drawing Manager, internalizing this feature, and allowing removal of native Google Drawing Manager. Due to upcoming deprecation
+* Added scale line control support for Google Maps, Leaflet, and OpenLayers. Can be enabled on a per map basis
+* Added ability to override plugin language from within the settings. Defaults to site language
+* Added ability to override custom tile server token field name
+* Added ability to override custom tile server type (raster or vector)
+* Added native Elementor integration with Map and Store Locator widgets, mirroring the existing Gutenberg block structure
+* Added ElementorModuleWidget abstract base class to provide a shared preview/render pattern for all Elementor module widgets
+* Added support for WPML post type translations, ensuring integrated post type marker sources respect the active language
+* Added blueprint JSON file to assets for preview mode support moving forward
+* Fixed issue where script loader would throw a notice for Google vertex menu when not using Google Maps engine
+* Fixed issue where Leaflet maps set to a starting zoom below 2 would cause incorrect marker placement due to EPSG3857 world-copy wrapping; a safe minZoom floor of 2 is now enforced for standard tile maps (custom tile/CRS.Simple maps are unaffected)
+* Fixed issue where Astra Theme Compatibility layer may trigger an error on some environments
+* Improved the language loader to ensure we don't unexpectedly trigger a global language file due to missing files, as this leads to outdated translations
+* Improved all datatables related styles to better support the V2 upgrade
+* Updated FR translation files. Thanks to Madevcomfr
+* Updated credits page to include new contributors and translators
+* Updated internal process to ensure accurate version management (SVN)
+* Updated DataTables to V2 release, and migrated core modules to support this change
+* Updated WritersBlock internal library to add additional features
+* Remove responsive DataTables extension as this is bundled in our V2 files
+* Removed Google Drawing Manager as a dependency, in favour of internal module, which is being deprecated by Google
+
+= 10.0.06 - 2026-03-17 =
+* Fixed issue where nonce refresh actions were missing permission checks, creating an XSS vulnerability. Security issue. Thanks Nguyen Ba Hung (bashu) (KCSC) (Wordfence)
+* Fixed issue where settings storage would rely purely on nonce checks, without reasserting permissions. Security issue. Thanks Nguyen Ba Hung (bashu) (KCSC) (Wordfence)
+* Fixed issue where Google marker click event for AdvancedMarkerRender mode was set to 'click' instead of the suggested 'gmp-click'
+* Fixed issue where marker offset method would fail in Leaflet causing issues with NVC systems and other marker nudge modules
+
+= 10.0.05 - 2026-01-14 =
+* Fixed issue where notice actions were missing permission checks. Low level users could trigger actions like switching map engines. Security issue. Thanks Moose Love (Nagasaki Prefectural University) (Wordfence)
+* Fixed issue where deferred loading with WP Rocket would lead to initialization error. We now exclude inline initializer and settings object from this system. Can be disabled in settings
+* Fixed issue where batch marker loading would incorrectly trigger final shape fetch request
+* Fixed issue where internal map library loaders would not respect force-load flag when enqueueing scripts
+* Fixed issue with setMap calls on point labels
+* Improved point label architecture to support regeneration and map ID changes if needed
+
+= 10.0.04 - 2025-12-04 =
+* Added pro features page and menu item
+* Added additional page construction hooks
+* Added demo list to maps view page
+* Added LocationIQ to engine swap toolbar
+* Improved PHP 8.5 stability & compatibility
+* Fixed issue where engine swap toolbar would not set tileserver defaults for first time users
+* Fixed issue where map list clicks were not being handled correctly for action buttons
+* Fixed issue where PHP 8.5 would throw a deprecation warning due to an outdated switch case
+* Fixed issue with our internal links, docs, site, support, forums, throughout the plugin
+* Fixed issue where bulk marker selection button would not work in some environments
+* Fixed issue where info-window link controls were available in basic
+* Updated marker listing demo image
+
+= 10.0.03 - 2025-11-27 =
+* Added first time usage flow which opens the marker creator once for new users (UX Improvement)
+* Added engine swap toolbar to map editor for first time usage, once dismissed does not show again (UX Improvement)
+* Added a new setting to enable dynamic translations, as this must be an opt in for large data sites
+* Updated internal CTA buttons and controls from gold to blue (UX Improvement)
+* Removed a console log within the map initialization controller, it is not relevant with delayed loading
+* Removed the disable dynamic translation, instead we now allow this via an opt in instead
 
 = 10.0.02 - 2025-11-17 =
 * Added shapes and overlays sub-section to map editor, moving all relevant datasets into that panel (UX Improvement)
@@ -361,7 +359,7 @@ Please update your WP Go Maps version to 6.3.15 to ensure you are using the late
 * Added blue highlight to primary dataset creation buttons to make it clearer how to add datasets (UX Improvement)
 * Added button to marker quick tip notice to jump straight to marker creation (UX Improvement)
 * Added conditional checks for major version mismatches in compiler, preventing mismatched major versions from throwing build errors
-* Added a one time hint tool to our internal map editor tour system, which will show helpful usage hints after the main tour is completed. 
+* Added a one time hint tool to our internal map editor tour system, which will show helpful usage hints after the main tour is completed.
 * Fixed issue where Google Maps logo would not display on some installations, within the engine selector
 * Fixed issue where plugins that load bootstrap in our editor might cause editor placement issues, plugin conflict
 * Fixed issue where map preview would not generate on some themes. We now generate a draft page, which is reused and pruned when new previews are created
@@ -391,14 +389,14 @@ Please update your WP Go Maps version to 6.3.15 to ensure you are using the late
 * Added Atlas Novus as the default internal build
 * Added danger zone tool to reindex any spatial coordinate data for markers, where a spatial coordinate has gone missing
 * Added ability to adjust rectangle boundaries with  boundary input
-* Added ability to bulk delete shapes 
+* Added ability to bulk delete shapes
 * Added ability to center on shapes and datasets within the editor
 * Added dropdown context meny to shape datatables
 * Added option to cachebust REST API requests
 * Added improved GDPR styling, it becomes the new default
 * Added quick delete button to info-window within the map editor
-* Added ability to override any HTML template part via a child theme override 
-* Added map preview system, allowing maps to be previewed on frontpage 
+* Added ability to override any HTML template part via a child theme override
+* Added map preview system, allowing maps to be previewed on frontpage
 * Added default indexes to all tables to improve performance
 * Added spatial indexes to tables where applicable to improve performance
 * Added fullscreen map editor panel mode, for dataset listings, allowing more data to be viewed
@@ -427,7 +425,7 @@ Please update your WP Go Maps version to 6.3.15 to ensure you are using the late
 * - - - We know that accessibility is more nuanced than simple machine driven tests, we'd like to work with our community to ensure we improve this further
 * - - - Please reach out to us if you find anything that you feel should be improved as a priority!
 * Improved internal autocomplete modules for better user experience and management
-* Improved theme preset user interface 
+* Improved theme preset user interface
 * Improved theme CSS editor
 * Improved tile server system to handle params and authentication more efficiently
 * Improved tile server system to properly attribute various service providers
@@ -466,14 +464,4 @@ Please update your WP Go Maps version to 6.3.15 to ensure you are using the late
 * Archived V9 changelogs
 
 
-
-For more, please view the WP Go Maps site
-
-
-
-
-
-
-
-
-
+For more, please view the WP Go Maps site.

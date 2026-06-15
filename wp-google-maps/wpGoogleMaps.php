@@ -3,15 +3,136 @@
 Plugin Name: WP Go Maps (formerly WP Google Maps)
 Plugin URI: https://www.wpgmaps.com
 Description: The easiest to use Google Maps plugin! Create custom Google Maps or a map block with high quality markers containing locations, descriptions, images and links. Add your customized map to your WordPress posts and/or pages quickly and easily with the supplied shortcode. No fuss.
-Version: 10.0.02
+Version: 10.1.02
 Author: WP Go Maps (formerly WP Google Maps)
 Author URI: https://www.wpgmaps.com
 Text Domain: wp-google-maps
 Domain Path: /languages
+License: GPLv2
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
 */
 
 
 /*
+ * 10.1.02 - 2026-06-15
+ * Fixed issue where unauthenticated requests could trigger unintended database writes via the DataTables REST endpoint. Security issue, thanks to Thanh Diem (Wordfence)
+ * Fixed issue where Datatables language files may not load correctly in some environments due to name case. Fallback system developed to resolve and fail gracefully if unavailable
+ * 
+ * 10.1.01 - 2026-06-10
+ * Added a canonical POT translation template (languages/wp-google-maps.pot) so translators and contributors can generate and maintain language files from a single source rather than reconstructing the template locally each pass
+ * Added a fully complete French (fr_FR) translation, refreshed against the 10.1.00 codebase.
+ * Added a fully complete German (de_DE) translation, refreshed against the 10.1.00 codebase.
+ * Added a fully complete Italian (it_IT) translation, refreshed against the 10.1.00 codebase.
+ * Added a fully complete Spanish (es_ES) translation, refreshed against the 10.1.00 codebase.
+ * Added a fully complete Polish (pl_PL) translation, refreshed against the 10.1.00 codebase.
+ * Fixed issue where Leaflet frontend maps could place markers at incorrect pixel positions when the page layout had not finished settling at map construction time. An invalidateSize() call after first paint forces the origin to be recalculated against the correct container dimensions
+ * Improved responsiveness of the map editor at narrow viewports (Atlas Major)
+ *
+ * 10.1.00 - 2026-06-03
+ * New UI introduced: "Atlas Major"
+ * Added Atlas Major UI as an opt-in beta. Activate via Settings > Danger Zone > Internal Build. Built on Tailwind CSS with a Plus Jakarta Sans typeface
+ * Added Live Preview to the map editor — a browser mockup frame around the map area showing how the page will render, with real-time updates as settings change
+ * Added automatic background save via REST. Form changes are persisted shortly after a change with a "Saved" pill indicator; falls back to a native form submit after 3s if the REST request fails
+ * Added live tileset swap — clicking a tileset card under Themes > Tileset applies it to the editor map immediately without needing to save
+ * Added click-drag isolation on info-window panels, directions boxes, and inner-stack overlays so panel interactions no longer drag the map underneath
+ * Added "Save & Reload" confirmation modal for settings that require a fresh map construction (e.g. custom image overlay enable/disable), including an in-progress overlay during the reload
+ * Added auto-scroll-to-top + address field focus after a successful Add Marker
+ * Added auto-close of info window panel after Delete, and auto-refresh of info window content after a marker save
+ * Added "Below Map" as the default placement for the Marker Listing component on new maps in the Atlas Major editor
+ * Added store locator text override preservation across editor rebuilds
+ * Added 🔑 indicator next to engines in the editor's engine-switch dropdown that require an API key
+ * Added missing-API-key notice for Microsoft Azure, Stadia Maps, Maptiler, and LocationIQ (previously Google Maps only)
+ * Added auto-return to the feature list panel after a successful Add Marker / Add shape
+ * Fixed issue where saving the map in basic would write empty strings into Pro-only store locator visual fields (line/fill colour and opacity), leading to invisible store-locator circles after Pro was activated
+ * Fixed issue where info-window distance calculation read the wrong unit source, causing "miles away" labels with kilometre values
+ * Fixed issue where the map list page displayed poorly on small screens due to DataTables 2 colgroup widths
+ * Fixed issue where the map editor's REST auto-save returned a 500 under Pro because an admin-only file include wasn't available in the REST request context
+ * Fixed issue where Plugin class __isset was missing magic-getter cases, causing several live-preview Pro template injections to silently fail
+ * Fixed issue where the Custom Image overlay's live preview could corrupt the map start coordinates because the Leaflet CRS is locked at map construction
+ * Fixed unchecked checkboxes being treated as enabled in Atlas Major live preview
+ * Fixed issue where the bulk markers REST endpoint would return unapproved markers to unauthenticated users. Security issue, thanks to Fraudless.tech (Ilyess Ghalem)
+ * Improved cursor handling across editor panels and info-window overlays so Leaflet's grab cursor no longer leaks into UI surfaces
+ * Improved internationalisation by auditing Atlas Major UI strings and migrating hardcoded text to WPGMZA.localized_strings
+ * Improved default map height for new maps from 400px to 600px
+ * Improved Save Map button feedback — pulses red with a spinner during autosave and manual saves
+ * Improved engine switching from the editor toolbar — now reloads the editor so the new engine's libraries load
+ * Improved the missing-API-key notice — renders as a centered card over the map area
+ * Improved store-locator radius circle cleanup when components rebuild in live preview
+ * Improved Atlas Major editor diagnostics — removed verbose console.log noise on page load and save
+ *
+ * 10.0.10 - 2026-05-13
+ * Fixed issue where Datatables AJAX fallback would bypass the approval filter. Security issue, thanks to WPScan, Jetpack, Automattic (Erwan)
+ * Fixed issue where single marker endpoint and AJAX fallback would bypass the approval filter. Security issue, thanks to WPScan, Jetpack, Automattic (Erwan)
+ * Fixed issue where Pro users below V10.0.06 would experience issues with admin marker tables, which do not have access to V2 library methods
+ * Fixed issue where Pro users below V10.0.06 would experience issues Google Drawing Manager, which is being deprecated in favor of an internal module
+ * Fixed issue where WPML users would experience failure in the settings area when running legacy UI
+ * 
+ * 10.0.09 - 2026-04-16
+ * Fixed issue where minified code base was not accurately compiled due to issue with internal build tools. Only affected pro users
+ * 
+ * 10.0.08 - 2026-04-16
+ * Fixed issue where users on Pro below V10 would experience a DataTables V2 init failure, preventing access to the map editor and marker list. When Pro below V10 is detected, DataTables V1.12 and its Responsive extension are now loaded from CDN instead
+ * Fixed issue where users on Pro below V10 would see an init failure on the map editor due to the Google Drawing Manager library not being loaded. The drawing library is now injected into the Google Maps API URL via the compatibility layer when Pro below V10 is detected on the map edit page
+ *
+ * 10.0.07 - 2026-04-15
+ * Added methods to internal Google Drawing Manager, internalizing this feature, and allowing removal of native Google Drawing Manager. Due to upcoming deprecation
+ * Added scale line control support for Google Maps, Leaflet, and OpenLayers. Can be enabled on a per map basis
+ * Added ability to override plugin language from within the settings. Defaults to site language
+ * Added ability to override custom tile server token field name
+ * Added ability to override custom tile server type (raster or vector)
+ * Added native Elementor integration with Map and Store Locator widgets, mirroring the existing Gutenberg block structure
+ * Added ElementorModuleWidget abstract base class to provide a shared preview/render pattern for all Elementor module widgets
+ * Added support for WPML post type translations, ensuring integrated post type marker sources respect the active language
+ * Added blueprint JSON file to assets for preview mode support moving forward
+ * Fixed issue where script loader would throw a notice for Google vertex menu when not using Google Maps engine
+ * Fixed issue where Leaflet maps set to a starting zoom below 2 would cause incorrect marker placement due to EPSG3857 world-copy wrapping; a safe minZoom floor of 2 is now enforced for standard tile maps (custom tile/CRS.Simple maps are unaffected)
+ * Fixed issue where Astra Theme Compatibility layer may trigger an error on some environments
+ * Improved the language loader to ensure we don't unexpectedly trigger a global language file due to missing files, as this leads to outdated translations
+ * Improved all datatables related styles to better support the V2 upgrade
+ * Updated FR translation files. Thanks to Madevcomfr
+ * Updated credits page to include new contributors and translators
+ * Updated internal process to ensure accurate version management (SVN)
+ * Updated DataTables to V2 release, and migrated core modules to support this change
+ * Updated WritersBlock internal library to add additional features
+ * Remove responsive DataTables extension as this is bundled in our V2 files
+ * Removed Google Drawing Manager as a dependency, in favour of internal module, which is being deprecated by Google
+ * 
+ * 10.0.06 - 2026-03-17
+ * Fixed issue where nonce refresh actions were missing permission checks, creating an XSS vulnerability. Security issue. Thanks Nguyen Ba Hung (bashu) (KCSC) (Wordfence)
+ * Fixed issue where settings storage would rely purely on nonce checks, without reasserting permissions. Security issue. Thanks Nguyen Ba Hung (bashu) (KCSC) (Wordfence)
+ * Fixed issue where Google marker click event for AdvancedMarkerRender mode was set to 'click' instead of the suggested 'gmp-click'
+ * Fixed issue where marker offset method would fail in Leaflet causing issues with NVC systems and other marker nudge modules
+ * 
+ * 10.0.05 - 2026-01-14
+ * Fixed issue where notice actions were missing permission checks. Low level users could trigger actions like switching map engines. Security issue. Thanks Moose Love (Nagasaki Prefectural University) (Wordfence)
+ * Fixed issue where deferred loading with WP Rocket would lead to initialization error. We now exclude inline initializer and settings object from this system. Can be disabled in settings
+ * Fixed issue where batch marker loading would incorrectly trigger final shape fetch request
+ * Fixed issue where internal map library loaders would not respect force-load flag when enqueueing scripts
+ * Fixed issue with setMap calls on point labels
+ * Improved point label architecture to support regeneration and map ID changes if needed
+ * 
+ * 10.0.04 - 2025-12-04
+ * Added pro features page and menu item
+ * Added additional page construction hooks
+ * Added demo list to maps view page
+ * Added LocationIQ to engine swap toolbar
+ * Improved PHP 8.5 stability & compatibility
+ * Fixed issue where engine swap toolbar would not set tileserver defaults for first time users
+ * Fixed issue where map list clicks were not being handled correctly for action buttons
+ * Fixed issue where PHP 8.5 would throw a deprecation warning due to an outdated switch case
+ * Fixed issue with our internal links, docs, site, support, forums, throughout the plugin
+ * Fixed issue where bulk marker selection button would not work in some environments 
+ * Fixed issue where info-window link controls were available in basic
+ * Updated marker listing demo image
+ * 
+ * 10.0.03 - 2025-11-27
+ * Added first time usage flow which opens the marker creator once for new users (UX Improvement)
+ * Added engine swap toolbar to map editor for first time usage, once dismissed does not show again (UX Improvement)
+ * Added a new setting to enable dynamic translations, as this must be an opt in for large data sites
+ * Updated internal CTA buttons and controls from gold to blue (UX Improvement)
+ * Removed a console log within the map initialization controller, it is not relevant with delayed loading
+ * Removed the disable dynamic translation, instead we now allow this via an opt in instead
+ * 
  * 10.0.02 - 2025-11-17
  * Added shapes and overlays sub-section to map editor, moving all relevant datasets into that panel (UX Improvement)
  * Added ability to click on a map from the map list to open the editor (UX Improvement)
@@ -252,7 +373,7 @@ if (isset($_GET['page']) && ($_GET['page'] == 'wp-google-maps-menu' || $_GET['pa
 						?></p><br />
 
 						<p><?php
-							echo __('Please note, in this configuration our new Atlas Novus build cannot be enabled, which means some new features will not be available.', 'wp-google-maps');
+							echo esc_html__('Please note, in this configuration our new Atlas Novus build cannot be enabled, which means some new features will not be available.', 'wp-google-maps');
 						?></p>
 						<p>&nbsp;</p>
 					</div><br />

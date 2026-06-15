@@ -328,11 +328,13 @@ class AdminNotices {
 	 * @return void
 	*/
 	public function dismissFromPostAjax(){
-		if (empty($_POST['slug']) || empty($_POST['wpgmza_security']) || !wp_verify_nonce($_POST['wpgmza_security'], 'wpgmza_ajaxnonce')) {
+		global $wpgmza;
+		
+		if (empty($_POST['slug']) || empty($_POST['wpgmza_security']) || !wp_verify_nonce(sanitize_text_field(wp_unslash($_POST['wpgmza_security'])), 'wpgmza_ajaxnonce') || !$wpgmza->isUserAllowedToEdit()) {
 			wp_send_json_error(__( 'Security check failed, import will continue, however, we cannot provide you with live updates', 'wp-google-maps' ));
 		}
 
-		$slug = sanitize_text_field($_POST['slug']);
+		$slug = sanitize_text_field(wp_unslash($_POST['slug']));
 		if (!empty($slug)){
 			$this->dismiss($slug);
 			wp_send_json_success('Complete');
@@ -347,11 +349,13 @@ class AdminNotices {
 	 * @return void
 	 */
 	public function processBackgroundAction(){
-		if (empty($_POST['relay']) || empty($_POST['wpgmza_security']) || !wp_verify_nonce($_POST['wpgmza_security'], 'wpgmza_ajaxnonce')) {
+		global $wpgmza;
+
+		if (empty($_POST['relay']) || empty($_POST['wpgmza_security']) || !wp_verify_nonce(sanitize_text_field(wp_unslash($_POST['wpgmza_security'])), 'wpgmza_ajaxnonce') || !$wpgmza->isUserAllowedToEdit()) {
 			wp_send_json_error(__( 'Security check failed, import will continue, however, we cannot provide you with live updates', 'wp-google-maps' ));
 		}
 
-		$relayAction = sanitize_text_field($_POST['relay']);
+		$relayAction = sanitize_text_field(wp_unslash($_POST['relay']));
 		if(!empty($relayAction)){
 			switch($relayAction){
 				case 'swap_internal_engine':
@@ -367,11 +371,60 @@ class AdminNotices {
 
 					/* Dismiss it - It's one-switch and done */
 					if(!empty($_POST['slug'])){
-						$slug = sanitize_text_field($_POST['slug']);
+						$slug = sanitize_text_field(wp_unslash($_POST['slug']));
 						if (!empty($slug)){
 							$this->dismiss($slug);
 						}
 					}
+					break;
+				case 'swap_map_engine_from_toolbar':
+					/* We handle this here for simplicity - but it belongs somewhere else to be honest */
+					global $wpgmza;
+					$switch = !empty($_POST['map_engine']) ? sanitize_text_field($_POST['map_engine']) : false;
+					$valid = array("google-maps", "leaflet-azure", "leaflet-stadia", "leaflet-maptiler", "leaflet-locationiq", "leaflet-zerocost", "leaflet", "open-layers-latest");
+					
+					if(in_array($switch, $valid)){
+						/* Valid switch */
+						$wpgmza->settings->wpgmza_maps_engine = $switch;
+
+						switch($switch){
+							case 'leaflet-azure':
+								if(empty($wpgmza->settings->tile_server_url_leaflet_azure)){
+									$wpgmza->settings->tile_server_url_leaflet_azure = "{alias:azure-multilayer}";
+								}
+								break;
+							case 'leaflet-stadia':
+								if(empty($wpgmza->settings->tile_server_url_leaflet_stadia)){
+									$wpgmza->settings->tile_server_url_leaflet_stadia = "{alias:stadia-multilayer}";
+								}
+								break;
+							case 'leaflet-maptiler':
+								if(empty($wpgmza->settings->tile_server_url_leaflet_maptiler)){
+									$wpgmza->settings->tile_server_url_leaflet_maptiler = "{alias:maptiler-multilayer}";
+								}
+								break;
+							case 'leaflet-locationiq':
+								if(empty($wpgmza->settings->tile_server_url_leaflet_locationiq)){
+									$wpgmza->settings->tile_server_url_leaflet_locationiq = "https://{s}-tiles.locationiq.com/v3/streets/r/{z}/{x}/{y}.png";
+								}
+								break;
+							case 'leaflet-zerocost':
+								if(empty($wpgmza->settings->tile_server_url_leaflet_zerocost)){
+									$wpgmza->settings->tile_server_url_leaflet_zerocost = "https://tiles.openfreemap.org/styles/liberty";
+								}
+								break;
+							case 'leaflet':
+							case 'open-layers-latest':
+								if(empty($wpgmza->settings->tile_server_url)){
+									$wpgmza->settings->tile_server_url = "https://{a-c}.tile.openstreetmap.org/{z}/{x}/{y}.png";
+								}
+								break;
+						}
+					}
+					break;
+				case 'swap_map_engine_from_toolbar_dismiss':
+					/* We handle this here for simplicity - but it belongs somewhere else to be honest */
+					update_option("wpgmza-engine-switch-toolbar-dismissed", date("Y-m-d H:i:s"), false);
 					break;
 			}
 		}

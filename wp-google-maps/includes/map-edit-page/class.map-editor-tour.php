@@ -44,7 +44,7 @@ class MapEditorTour extends DOMDocument {
 
 	public static function logProgressFromAjax(){
 		global $wpgmza;
-		if(!wp_verify_nonce($_POST['wpgmza_security'], 'wpgmza_ajaxnonce')){
+		if(!wp_verify_nonce(sanitize_text_field(wp_unslash($_POST['wpgmza_security'])), 'wpgmza_ajaxnonce')){
 			http_response_code(403);
 			exit;
 		}
@@ -82,6 +82,24 @@ class MapEditorTour extends DOMDocument {
 
 		wp_send_json(array('success' => 1));
 		exit;
+	}
+
+	public function shouldReceiveFTU(){
+		/* Should user receive first time usage flow */
+		$optionName = "wpgmza-tour-ftu-complete";
+		$optionValue = get_option($optionName);
+		if(empty($optionValue)){
+			return true;
+		}
+		return false;
+	}
+
+	public function loadFTU($document){
+		$firstTimeUsageFlow = "ftu.trigger.markercreator";
+		if($wrapper = $document->querySelector('.wpgmza-wrap')){
+			$wrapper->setAttribute('data-wpgmza-ftu', $firstTimeUsageFlow);
+			update_option("wpgmza-tour-ftu-complete", date("Y-m-d H:i:s"), false);
+		}
 	}
 
 	public function loadOTH($document){

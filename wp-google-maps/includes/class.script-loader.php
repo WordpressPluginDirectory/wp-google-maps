@@ -123,7 +123,6 @@ class ScriptLoader
 		
 		$libraryDependencies = array(
 			'datatables'			=> $plugin_dir_url . "js/jquery.dataTables{$minified}.js",
-			'datatables-responsive'	=> $plugin_dir_url . "js/dataTables.responsive.js",
 			'javascript-cookie'		=> $plugin_dir_url . 'lib/jquery-cookie.js',
 			'remodal'				=> $plugin_dir_url . "lib/remodal{$minified}.js",
 			// PEP JS for iOS 12 pointer events
@@ -475,9 +474,6 @@ class ScriptLoader
 		if(!$forceLoad && !$wpgmza->getCurrentPage())
 			return; // NB: Not forcing a load, and not on a map page.
 		
-		// wp_enqueue_style('wpgmza-color-picker', plugin_dir_url(__DIR__) . 'lib/spectrum.css');
-		// wp_enqueue_style('datatables', '//cdn.datatables.net/1.10.13/css/jquery.dataTables.min.css');
-
 		$version_string = $wpgmza->getBasicVersion();
 		if(method_exists($wpgmza, 'getProVersion')){
 			$version_string .= '+pro-' . $wpgmza->getProVersion();
@@ -521,14 +517,17 @@ class ScriptLoader
 					wp_enqueue_style("wpgmza-ui-default", $base . "css/styles/default.css", array(), $version_string);
 					break;
 			}
+		} else if($wpgmza->internalEngine->isAtlasMajor()){
+			/* Atlas Major loads its own copy of components (allows independent changes) + its own CSS */
+			wp_enqueue_style("wpgmza-components", $base . "css/atlas-major/components.css", array(), $version_string);
+			wp_enqueue_style("wpgmza-atlas-major", $base . "css/atlas-major/atlas-major.css", array('wpgmza-components'), $version_string);
 		} else {
 			wp_enqueue_style("wpgmza-components", $base . "css/atlas-novus/components.css", array(), $version_string);
 			wp_enqueue_style("wpgmza-compat", $base . "css/atlas-novus/compat.css", array(), $version_string);
 		}
 			
-		// Legacy stylesheets
-		if(is_admin() && !empty($wpgmza->getCurrentPage())){
-			// wp_enqueue_style('wpgmza_admin', $base . "css/wp-google-maps-admin.css", array(), $version_string);
+		// Admin stylesheets — Atlas Major is self-contained, skip the legacy/novus admin CSS
+		if(is_admin() && !empty($wpgmza->getCurrentPage()) && !$wpgmza->internalEngine->isAtlasMajor()){
 			wp_enqueue_style('wpgmza_admin', $wpgmza->internalEngine->getStylesheet('wp-google-maps-admin.css'), array(), $version_string);
 			wp_enqueue_style('editor-buttons');
 		}
@@ -667,17 +666,17 @@ class ScriptLoader
 		
 		// Get library scripts
 		$libraries = $this->getLibraryScripts();
-		
+
 		// Enqueue Google API call if necessary
 		switch($wpgmza->settings->engine)
 		{
 			case "open-layers":
 				$loader = new OLLoader(OLLoader::VERSION_TYPE_LEGACY);
-				$loader->loadOpenLayers();
+				$loader->loadOpenLayers($forceLoad);
 				break;
 			case "open-layers-latest":
 				$loader = new OLLoader();
-				$loader->loadOpenLayers();
+				$loader->loadOpenLayers($forceLoad);
 				break;
 			case "leaflet":
 			case "leaflet-azure":
@@ -686,11 +685,11 @@ class ScriptLoader
 			case "leaflet-locationiq":
 			case "leaflet-zerocost":
 				$loader = LeafletLoader::createInstance();
-				$loader->load();
+				$loader->load($forceLoad);
 				break;
 			default:
 				$loader = ($wpgmza->isProVersion() ? new GoogleProMapsLoader() : new GoogleMapsLoader());
-				$loader->loadGoogleMaps();
+				$loader->loadGoogleMaps($forceLoad);
 				break;
 		}
 
@@ -816,15 +815,27 @@ class ScriptLoader
 		
 		// Enqueue other scripts
 		foreach($this->scripts as $handle => $script){
+			// Skip scripts that require wpgmza_api_call when the Maps API is not being loaded (e.g. non-Google Maps engine)
+			if(!$apiLoader->isIncludeAllowed() && !empty($script->dependencies) && in_array('wpgmza_api_call', (array)$script->dependencies)){
+				continue;
+			}
 			$fullpath = plugin_dir_url(($script->pro ? WPGMZA_PRO_FILE : __DIR__)) . $script->src;
 			wp_enqueue_script($handle, $fullpath, $script->dependencies, $version_string, $scriptArgs);
-			
+
 		}
 		
-	    /* Developer Hook (Action) - Enqueue additional scripts */     
+		/* Atlas Major scripts */
+		if($wpgmza->internalEngine->isAtlasMajor()){
+			wp_enqueue_script('wpgmza-atlas-major-tabs', plugin_dir_url(__DIR__) . 'js/v8/atlas-major-tabs.js', array('jquery'), $version_string, $scriptArgs);
+			wp_enqueue_script('wpgmza-atlas-major-marker-list', plugin_dir_url(__DIR__) . 'js/v8/atlas-major-marker-list.js', array('jquery'), $version_string, $scriptArgs);
+			wp_enqueue_script('wpgmza-atlas-major-feature-list', plugin_dir_url(__DIR__) . 'js/v8/atlas-major-feature-list.js', array('jquery'), $version_string, $scriptArgs);
+			wp_enqueue_script('wpgmza-atlas-major-live-preview', plugin_dir_url(__DIR__) . 'js/v8/atlas-major-live-preview.js', array('jquery'), $version_string, $scriptArgs);
+		}
+
+	    /* Developer Hook (Action) - Enqueue additional scripts */
 		do_action('wpgmza_enqueue_scripts');
 
-	    /* Developer Hook (Action) - Enqueue additional scripts */     
+	    /* Developer Hook (Action) - Enqueue additional scripts */
 		do_action('wpgmza_script_loader_enqueue_scripts');
 		
 		// Enqueue localized data
@@ -903,7 +914,7 @@ class ScriptLoader
 		global $wpgmza;
 
 		if (!empty($wpgmza->settings->wpgmza_do_not_enqueue_datatables) && !is_admin()) {
-			$dequeue = array('datatables', 'datatables-responsive');
+			$dequeue = array('datatables');
 			foreach($dequeue as $tag){
 				if (isset($dep[$tag])) {
 					unset($dep[$tag]);

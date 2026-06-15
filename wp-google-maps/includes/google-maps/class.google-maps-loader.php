@@ -42,7 +42,7 @@ class GoogleMapsLoader
 		global $wpgmza;
 		
 		// Locale
-		$locale = get_locale();
+		$locale = (!empty($wpgmza->settings->locale_override) && $wpgmza->settings->locale_override !== 'site-default') ? $wpgmza->settings->locale_override : get_locale();
 		$suffix = '.com';
 		$region = false;
 
@@ -81,9 +81,9 @@ class GoogleMapsLoader
 		// Libraries
 		$libraries = array('geometry', 'places', 'visualization', 'marker');
 		
-		if($wpgmza->getCurrentPage() == Plugin::PAGE_MAP_EDIT){
-			$libraries[] = 'drawing';
-		}
+		// if($wpgmza->getCurrentPage() == Plugin::PAGE_MAP_EDIT){
+		// 	$libraries[] = 'drawing';
+		// }
 		
 		$params['libraries'] = implode(',', $libraries);
 		
@@ -135,11 +135,11 @@ class GoogleMapsLoader
 	 * This function loads the Google API if it hasn't been called already
 	 * @return void
 	 */
-	public function loadGoogleMaps()
+	public function loadGoogleMaps($forceLoad = false)
 	{
 		global $wpgmza;
 		
-		if(GoogleMapsLoader::$googleAPILoadCalled)
+		if(GoogleMapsLoader::$googleAPILoadCalled && empty($forceLoad))
 			return;
 		
 		$apiLoader = new GoogleMapsAPILoader();
@@ -183,4 +183,3 @@ class GoogleMapsLoader
 	}
 	
 }
-

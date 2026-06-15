@@ -15,7 +15,7 @@ trait AdminFeatureDatatable
 		
 		$actionsHtml = "
 			<div class=\'wpgmza-action-buttons wpgmza-flex\'>
-				<a title=\'" . esc_attr('Edit this feature', 'wp-google-maps') . "\'
+				<a title=\'" . esc_attr__('Edit this feature', 'wp-google-maps') . "\'
 					class=\'wpgmza_edit_btn {$buttonClass}\'
 					data-edit-{$type}-id=\'{$id_placeholder}\'>
 					<i class=\'fa fa-edit\'> </i>
@@ -33,7 +33,7 @@ trait AdminFeatureDatatable
 					<input type=\'checkbox\' id=\'wpgmza-toolbar-conditional-{$type}-{$id_placeholder}\'>
 					<label class=\'wpgmza-button\' for=\'wpgmza-toolbar-conditional-{$type}-{$id_placeholder}\'><i class=\'fa fa-ellipsis-h\'></i></label>
 					<div class=\'wpgmza-toolbar-list\'>
-						<a title=\'Edit this feature\' class=\'wpgmza_edit_btn\' data-edit-{$type}-id=\'{$id_placeholder}\'>
+						<a title=\'" . esc_attr( __('Edit this feature', 'wp-google-maps') ) . "\' class=\'wpgmza_edit_btn\' data-edit-{$type}-id=\'{$id_placeholder}\'>
 							" . esc_attr( __('Edit', 'wp-google-maps') ) . "
 						</a>
 						<a href=\'javascript: ;\' title=\'"
